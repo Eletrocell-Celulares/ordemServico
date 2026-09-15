@@ -1,11 +1,12 @@
 function setChecklist(button, status) {
     const itemContainer = button.closest('.checklist-item');
-    const buttons = itemContainer.querySelectorAll('.chk-btn');
+    itemContainer.setAttribute('data-selected', status);
     
+    const buttons = itemContainer.querySelectorAll('.chk-btn');
     buttons.forEach(btn => {
         btn.classList.remove('active-ok', 'active-defeito', 'active-nt');
     });
-    
+
     if (status === 'OK') {
         button.classList.add('active-ok');
     } else if (status === 'Defeito') {
@@ -13,131 +14,78 @@ function setChecklist(button, status) {
     } else if (status === 'N/T') {
         button.classList.add('active-nt');
     }
-    
-    itemContainer.setAttribute('data-selected', status);
 }
 
-function gerarPDF() {
-    // Renomeia temporariamente o título da página para forçar o nome do arquivo ao imprimir/salvar PDF
-    const tituloAntigo = document.title;
-    document.title = "Eletrocell⚡️ | Ordem de serviço";
-    window.print();
-    setTimeout(() => {
-        document.title = tituloAntigo;
-    }, 1000);
+function formatarMoedaInput(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value === '') {
+        e.target.value = '';
+        return;
+    }
+    value = (parseInt(value, 10) / 100).toFixed(2);
+    value = value.replace('.', ',');
+    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    e.target.value = value;
 }
 
-// Máscaras e Validações
-document.addEventListener('DOMContentLoaded', () => {
-    const inputTelefone = document.getElementById('clienteContato');
-    if (inputTelefone) {
-        inputTelefone.addEventListener('input', (e) => {
-            let v = e.target.value.replace(/\D/g, '');
-            if (v.length > 11) v = v.slice(0, 11);
-            if (v.length > 6) {
-                v = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
-            } else if (v.length > 2) {
-                v = `(${v.slice(0, 2)}) ${v.slice(2)}`;
-            } else if (v.length > 0) {
-                v = `(${v}`;
-            }
-            e.target.value = v;
-        });
-    }
-
-    const inputCpf = document.getElementById('clienteCpf');
-    if (inputCpf) {
-        inputCpf.addEventListener('input', (e) => {
-            let v = e.target.value.replace(/\D/g, '');
-            if (v.length > 11) v = v.slice(0, 11);
-            if (v.length > 9) {
-                v = `${v.slice(0, 3)}.${v.slice(3, 6)}.${v.slice(6, 9)}-${v.slice(9)}`;
-            } else if (v.length > 6) {
-                v = `${v.slice(0, 3)}.${v.slice(3, 6)}.${v.slice(6)}`;
-            } else if (v.length > 3) {
-                v = `${v.slice(0, 3)}.${v.slice(3)}`;
-            }
-            e.target.value = v;
-        });
-    }
-
-    // Validação da saúde da bateria (mínimo 60, máximo 100)
-    const inputBateria = document.getElementById('saudeBateria');
-    if (inputBateria) {
-        inputBateria.addEventListener('input', (e) => {
-            let val = parseInt(e.target.value);
-            if (!isNaN(val)) {
-                if (val > 100) e.target.value = 100;
-                if (val < 0 && e.target.value.length > 1) e.target.value = 60;
-            }
-        });
-        inputBateria.addEventListener('blur', (e) => {
-            let val = parseInt(e.target.value);
-            if (!isNaN(val)) {
-                if (val < 60) {
-                    alert('A saúde da bateria deve ser de no mínimo 60%.');
-                    e.target.value = 60;
-                }
-            }
-        });
-    }
-
-    // Máscara automática para Reais (R$)
-    const moneyInputs = document.querySelectorAll('.money-input');
-    moneyInputs.forEach(input => {
-        if (!input.value) input.value = '0,00';
-
-        input.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value === '') {
-                e.target.value = '0,00';
-                return;
-            }
-            let numberValue = parseInt(value, 10) / 100;
-            e.target.value = numberValue.toLocaleString('pt-BR', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
-        });
-
-        input.addEventListener('focus', (e) => {
-            e.target.select();
-        });
-    });
+document.querySelectorAll('.money-input').forEach(input => {
+    input.addEventListener('input', formatarMoedaInput);
 });
 
-function formatarDataBR(dataIso) {
-    if (!dataIso) return '';
-    const partes = dataIso.split('-');
-    if (partes.length === 3) {
-        return `${partes[2]}/${partes[1]}/${partes[0]}`;
+function formatarTelefone(e) {
+    let v = e.target.value.replace(/\D/g, '');
+    if (v.length > 11) v = v.slice(0, 11);
+    if (v.length > 6) {
+        v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    } else if (v.length > 2) {
+        v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    } else if (v.length > 0) {
+        v = `(${v}`;
     }
-    return dataIso;
+    e.target.value = v;
+}
+
+const telInput = document.getElementById('clienteContato');
+if (telInput) {
+    telInput.addEventListener('input', formatarTelefone);
+}
+
+function formatarCPF(e) {
+    let v = e.target.value.replace(/\D/g, '');
+    if (v.length > 11) v = v.slice(0, 11);
+    if (v.length > 9) {
+        v = `${v.slice(0,3)}.${v.slice(3,6)}.${v.slice(6,9)}-${v.slice(9)}`;
+    } else if (v.length > 6) {
+        v = `${v.slice(0,3)}.${v.slice(3,6)}.${v.slice(6)}`;
+    } else if (v.length > 3) {
+        v = `${v.slice(0,3)}.${v.slice(3)}`;
+    }
+    e.target.value = v;
+}
+
+const cpfInput = document.getElementById('clienteCpf');
+if (cpfInput) {
+    cpfInput.addEventListener('input', formatarCPF);
 }
 
 function coletarDadosOS() {
-    let bateriaVal = document.getElementById('saudeBateria').value;
-    if (bateriaVal && !bateriaVal.includes('%')) {
-        bateriaVal += '%';
-    }
-
     return {
-        os: document.getElementById('osNumero').value || '000',
-        data: formatarDataBR(document.getElementById('dataEntrada').value),
-        atendente: document.getElementById('atendenteNome').value || '',
-        previsao: formatarDataBR(document.getElementById('previsaoTermino').value),
-        cliente: document.getElementById('clienteNome').value || '',
-        contato: document.getElementById('clienteContato').value || '',
-        cpf: document.getElementById('clienteCpf').value || '',
-        modelo: document.getElementById('aparelhoModelo').value || '',
-        cor: document.getElementById('aparelhoCor').value || '',
-        imei: document.getElementById('aparelhoImei').value || '',
-        senha: document.getElementById('aparelhoSenha').value || '',
+        os: document.getElementById('osNumero').value || '---',
+        data: document.getElementById('dataEntrada').value || '---',
+        atendente: document.getElementById('atendenteNome').value || '---',
+        previsao: document.getElementById('previsaoTermino').value || '---',
+        cliente: document.getElementById('clienteNome').value || '---',
+        contato: document.getElementById('clienteContato').value || '---',
+        cpf: document.getElementById('clienteCpf').value || '---',
+        modelo: document.getElementById('aparelhoModelo').value || '---',
+        cor: document.getElementById('aparelhoCor').value || '---',
+        imei: document.getElementById('aparelhoImei').value || '---',
+        bateria: document.getElementById('saudeBateria').value || '---',
+        senha: document.getElementById('aparelhoSenha').value || '---',
         icloud: document.getElementById('aparelhoIcloud').value || '',
-        bateria: bateriaVal || '',
-        acessorios: document.getElementById('acessoriosDeixados').value || '',
+        acessorios: document.getElementById('acessoriosDeixados').value || '---',
         avarias: document.getElementById('observacoesAvarias').value || '',
-        defeito: document.getElementById('defeitoRelatado').value || '',
+        defeito: document.getElementById('defeitoRelatado').value || '---',
         total: document.getElementById('valorTotal').value || '0,00',
         sinal: document.getElementById('valorSinal').value || '0,00',
         restante: document.getElementById('valorRestante').value || '0,00'
@@ -147,6 +95,37 @@ function coletarDadosOS() {
 function gerarTextoWhatsApp() {
     const d = coletarDadosOS();
     
+    // Preenche a folha estruturada para PDF/Impressão
+    document.getElementById('p-os').textContent = d.os;
+    document.getElementById('p-data').textContent = d.data;
+    document.getElementById('p-atendente').textContent = d.atendente;
+    document.getElementById('p-previsao').textContent = d.previsao;
+    document.getElementById('p-cliente').textContent = d.cliente;
+    document.getElementById('p-contato').textContent = d.contato;
+    document.getElementById('p-cpf').textContent = d.cpf;
+    document.getElementById('p-modelo').textContent = d.modelo;
+    document.getElementById('p-cor').textContent = d.cor;
+    document.getElementById('p-imei').textContent = d.imei;
+    document.getElementById('p-bateria').textContent = d.bateria;
+    document.getElementById('p-senha').textContent = d.senha;
+    document.getElementById('p-icloud').textContent = d.icloud || 'Não informado';
+    document.getElementById('p-acessorios').textContent = d.acessorios;
+    document.getElementById('p-avarias').textContent = d.avarias || 'Nenhuma avaria relatada';
+    document.getElementById('p-defeito').textContent = d.defeito;
+    document.getElementById('p-total').textContent = d.total;
+    document.getElementById('p-sinal').textContent = d.sinal;
+    document.getElementById('p-restante').textContent = d.restante;
+
+    // Preenche o checklist no PDF
+    let checklistPdfHtml = '';
+    document.querySelectorAll('.checklist-item').forEach(item => {
+        const nomeItem = item.getAttribute('data-item');
+        const status = item.getAttribute('data-selected');
+        checklistPdfHtml += `<div>• ${nomeItem}: <strong>[ ${status} ]</strong></div>`;
+    });
+    document.getElementById('p-checklist').innerHTML = checklistPdfHtml;
+
+    // Preenche também a caixa de texto para o WhatsApp
     let checklistTxt = '';
     document.querySelectorAll('.checklist-item').forEach(item => {
         const nomeItem = item.getAttribute('data-item');
@@ -179,26 +158,26 @@ function gerarTextoWhatsApp() {
 
     document.getElementById('previewBox').textContent = mensagem;
     
-    // Esconde o formulário e exibe a pré-visualização
     document.getElementById('osForm').style.display = 'none';
     document.getElementById('previewContainer').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function gerarPDF() {
+    window.print();
+}
+
 function enviarWhatsApp() {
     const d = coletarDadosOS();
-    const textoBox = document.getElementById('previewBox').textContent;
-    const numeroLimpo = d.contato.replace(/\D/g, '');
-    const url = `https://api.whatsapp.com/send?phone=55${numeroLimpo}&text=${encodeURIComponent(textoBox)}`;
+    const texto = document.getElementById('previewBox').textContent;
+    const url = `https://api.whatsapp.com/send?phone=55${d.contato.replace(/\D/g, '')}&text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
 }
 
 function copiarMensagem() {
-    const textoBox = document.getElementById('previewBox').textContent;
-    navigator.clipboard.writeText(textoBox).then(() => {
+    const texto = document.getElementById('previewBox').textContent;
+    navigator.clipboard.writeText(texto).then(() => {
         alert('Mensagem copiada para a área de transferência!');
-    }).catch(err => {
-        alert('Erro ao copiar mensagem.');
     });
 }
 
@@ -210,20 +189,23 @@ function voltarEditar() {
 
 function novaOS() {
     document.getElementById('osForm').reset();
-    
-    // Reseta valores monetários para padrão
-    document.querySelectorAll('.money-input').forEach(input => input.value = '0,00');
-
-    // Reseta checklist para OK em tudo por padrão
     document.querySelectorAll('.checklist-item').forEach(item => {
-        const buttons = item.querySelectorAll('.chk-btn');
-        buttons.forEach(btn => btn.classList.remove('active-ok', 'active-defeito', 'active-nt'));
-        const okBtn = item.querySelector('.chk-btn'); // Primeiro botão (OK)
-        if (okBtn) okBtn.classList.add('active-ok');
         item.setAttribute('data-selected', 'OK');
+        const buttons = item.querySelectorAll('.chk-btn');
+        buttons.forEach(btn => {
+            btn.classList.remove('active-ok', 'active-defeito', 'active-nt');
+            if (btn.textContent === 'OK') {
+                btn.classList.add('active-ok');
+            }
+        });
     });
-
     document.getElementById('previewContainer').style.display = 'none';
     document.getElementById('osForm').style.display = 'flex';
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+const hoje = new Date().toISOString().split('T')[0];
+const dataEntradaEl = document.getElementById('dataEntrada');
+if (dataEntradaEl && !dataEntradaEl.value) {
+    dataEntradaEl.value = hoje;
 }
