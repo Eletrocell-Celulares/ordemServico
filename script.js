@@ -42,7 +42,7 @@ function renderChecklist() {
     });
 }
 
-// GARANTE QUE APENAS UMA OPÇÃO (OK, DEFEITO, N/T) SEJA SELECIONADA POR ITEM
+// GARANTE QUE APENAS UMA OPÇÃO SEJA SELECIONADA POR ITEM
 function uncheckOthers(current, groupName) {
     if (current.checked) {
         const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
@@ -129,76 +129,119 @@ document.addEventListener('DOMContentLoaded', () => {
     const previewContent = document.getElementById('previewContent');
     const btnContainerPrincipal = document.getElementById('btnContainerPrincipal');
 
-    btnGerarPreview.addEventListener('click', () => {
-        const textoOS = gerarTextoWhatsapp();
-        previewContent.textContent = textoOS;
-        osDocumento.style.display = 'none';
-        btnContainerPrincipal.style.display = 'none';
-        previewContainer.style.display = 'flex';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    btnVoltarEditar.addEventListener('click', () => {
-        previewContainer.style.display = 'none';
-        osDocumento.style.display = 'block';
-        btnContainerPrincipal.style.display = 'flex';
-    });
-
-    btnEnviarWhatsapp.addEventListener('click', () => {
-        const texto = encodeURIComponent(gerarTextoWhatsapp());
-        const telefoneCliente = document.getElementById('val-telefone').value.replace(/\D/g, '');
-        
-        let linkWhatsapp = `https://wa.me/?text=${texto}`;
-        if (telefoneCliente.length >= 10) {
-            linkWhatsapp = `https://wa.me/55${telefoneCliente}?text=${texto}`;
-        }
-        window.open(linkWhatsapp, '_blank');
-    });
-
-    btnCopiarPreview.addEventListener('click', () => {
-        const texto = gerarTextoWhatsapp();
-        navigator.clipboard.writeText(texto).then(() => {
-            alert('Mensagem copiada com sucesso!');
-        }).catch(() => {
-            alert('Não foi possível copiar automaticamente.');
+    if (btnGerarPreview) {
+        btnGerarPreview.addEventListener('click', () => {
+            const textoOS = gerarTextoWhatsapp();
+            previewContent.textContent = textoOS;
+            osDocumento.style.display = 'none';
+            btnContainerPrincipal.style.display = 'none';
+            previewContainer.style.display = 'flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-    });
+    }
 
-    // GERAR PDF EXIBINDO O FORMULÁRIO COMPLETO E COM NOME PERSONALIZADO
-    btnGerarPdf.addEventListener('click', () => {
-        const tituloOriginal = document.title;
-        const cliente = document.getElementById('val-cliente').value.trim();
-        const dataEntrada = document.getElementById('dataEntrada').value;
+    if (btnVoltarEditar) {
+        btnVoltarEditar.addEventListener('click', () => {
+            previewContainer.style.display = 'none';
+            osDocumento.style.display = 'block';
+            btnContainerPrincipal.style.display = 'flex';
+        });
+    }
 
-        let complemento = "";
-        if (cliente) complemento += ` - ${cliente}`;
-        if (dataEntrada) complemento += ` - ${dataEntrada}`;
+    if (btnEnviarWhatsapp) {
+        btnEnviarWhatsapp.addEventListener('click', () => {
+            const texto = encodeURIComponent(gerarTextoWhatsapp());
+            const telefoneCliente = document.getElementById('val-telefone').value.replace(/\D/g, '');
+            
+            let linkWhatsapp = `https://wa.me/?text=${texto}`;
+            if (telefoneCliente.length >= 10) {
+                linkWhatsapp = `https://wa.me/55${telefoneCliente}?text=${texto}`;
+            }
+            window.open(linkWhatsapp, '_blank');
+        });
+    }
 
-        // Altera temporariamente o título da página para dar nome ao PDF
-        document.title = `ELETROCELL ⚡️ | Ordem de Serviço${complemento}`;
+    if (btnCopiarPreview) {
+        btnCopiarPreview.addEventListener('click', () => {
+            const texto = gerarTextoWhatsapp();
+            navigator.clipboard.writeText(texto).then(() => {
+                alert('Mensagem copiada com sucesso!');
+            }).catch(() => {
+                alert('Não foi possível copiar automaticamente.');
+            });
+        });
+    }
 
-        // Garante que a O.S. completa fique visível para o gerador de PDF
-        const estadoOsAnterior = osDocumento.style.display;
-        const estadoPreviewAnterior = previewContainer.style.display;
+    // GERAR PDF VIA MODO NATIVO FORÇANDO FUNDO CLARO
+    if (btnGerarPdf) {
+        btnGerarPdf.addEventListener('click', () => {
+            const cliente = document.getElementById('val-cliente').value.trim() || 'Cliente';
+            const osNum = document.getElementById('val-os').value.trim() || '001';
 
-        osDocumento.style.display = 'block';
-        previewContainer.style.display = 'none';
+            const tituloOriginal = document.title;
+            document.title = `OS_${osNum}_${cliente}`;
 
-        // Dispara a janela de PDF do iOS/Navegador
-        window.print();
+            const estadoOsAnterior = osDocumento.style.display;
+            const estadoPreviewAnterior = previewContainer ? previewContainer.style.display : 'none';
+            
+            osDocumento.style.display = 'block';
+            if (previewContainer) previewContainer.style.display = 'none';
 
-        // Restaura a visualização anterior da tela
-        setTimeout(() => {
-            document.title = tituloOriginal;
-            osDocumento.style.display = estadoOsAnterior;
-            previewContainer.style.display = estadoPreviewAnterior;
-        }, 800);
-    });
+            // Injeta CSS temporário para forçar fundo branco absoluto no PDF
+            const styleImpressao = document.createElement('style');
+            styleImpressao.id = 'estilo-impressao-temp';
+            styleImpressao.innerHTML = `
+                @media print {
+                    * {
+                        -webkit-print-color-adjust: exact !important;
+                        print-color-adjust: exact !important;
+                        background-color: #ffffff !important;
+                        color: #000000 !important;
+                        border-color: #cccccc !important;
+                        box-shadow: none !important;
+                    }
+                    html, body, .main-wrapper, .card, #osDocumento, .os-container {
+                        background: #ffffff !important;
+                        background-color: #ffffff !important;
+                        color: #000000 !important;
+                    }
+                    .os-header-box, .os-terms {
+                        background: #f5f5f5 !important;
+                        background-color: #f5f5f5 !important;
+                    }
+                    .os-field input, .os-field textarea {
+                        background: #ffffff !important;
+                        background-color: #ffffff !important;
+                        color: #000000 !important;
+                        border: 1px solid #cccccc !important;
+                        -webkit-text-fill-color: #000000 !important;
+                    }
+                    button, .btn-nova-os, .preview-container, #previewContainer, #btnContainerPrincipal, .os-bottom-action {
+                        display: none !important;
+                    }
+                }
+            `;
+            document.head.appendChild(styleImpressao);
 
-    btnLimparOs.addEventListener('click', () => {
-        if (confirm('Deseja realmente limpar todos os campos para iniciar uma nova O.S.?')) {
-            document.querySelectorAll('.os-container input, .os-container textarea').forEach(el => el.value = '');
-            document.querySelectorAll('.os-container input[type="checkbox"]').forEach(el => el.checked = false);
-        }
-    });
+            window.print();
+
+            setTimeout(() => {
+                document.title = tituloOriginal;
+                osDocumento.style.display = estadoOsAnterior;
+                if (previewContainer) previewContainer.style.display = estadoPreviewAnterior;
+                
+                const elemEstilo = document.getElementById('estilo-impressao-temp');
+                if (elemEstilo) elemEstilo.remove();
+            }, 500);
+        });
+    }
+
+    if (btnLimparOs) {
+        btnLimparOs.addEventListener('click', () => {
+            if (confirm('Deseja realmente limpar todos os campos para iniciar uma nova O.S.?')) {
+                document.querySelectorAll('.os-container input, .os-container textarea').forEach(el => el.value = '');
+                document.querySelectorAll('.os-container input[type="checkbox"]').forEach(el => el.checked = false);
+            }
+        });
+    }
 });
