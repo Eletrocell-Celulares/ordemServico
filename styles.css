@@ -44,7 +44,7 @@ body {
     color: #aaaaaa;
 }
 
-/* CABEÇALHO ESCURO NA TELA PRINCIPAL */
+/* CABEÇALHO ESCURO (APENAS NA TELA DA APLICAÇÃO) */
 .os-header-box {
     background-color: #2a2a2a;
     border: 1px solid #444;
@@ -274,7 +274,7 @@ button:hover {
     border-bottom: 2px solid #E66721;
     padding-bottom: 8px;
     margin-bottom: 10px;
-    background-color: #ffffff; /* Totalmente claro no PDF */
+    background-color: #ffffff;
 }
 
 .pdf-sheet-header h2 {
@@ -373,6 +373,16 @@ button:hover {
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
+    }
+
+    /* FORÇA O CABEÇALHO DA LOJA A FICAR BRANCO NO PDF */
+    .os-header-box {
+        background-color: #ffffff !important;
+        border: 1px solid #cccccc !important;
+    }
+
+    .os-store-info {
+        color: #333333 !important;
     }
 
     #osForm, 
