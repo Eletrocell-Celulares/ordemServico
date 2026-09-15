@@ -1,101 +1,127 @@
+/* ============================================================
+   ESTILOS GERAIS DA TELA (DARK MODE CLEAN)
+   ============================================================ */
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --card-border: #2c2c2c;
+    --accent-color: #E66721;
+    --accent-light: #ff8c42;
+    --text-primary: #f0f0f0;
+    --text-secondary: #a0a0a0;
+    --input-bg: #181818;
+    --input-border: #333333;
+    --input-focus: #E66721;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    background-color: #121212;
-    color: #e0e0e0;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 20px 10px;
     min-height: 100vh;
 }
 
 .main-wrapper {
     width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 650px;
 }
 
 .card {
-    background-color: #1e1e1e;
-    border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    border: 1px solid #2a2a2a;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .logo-container {
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+}
+
+.logo-container svg, .logo-container img {
+    display: inline-block;
+    max-width: 160px;
+    height: auto;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .header h1 {
-    font-size: 22px;
-    color: #ffffff;
-    font-weight: 700;
+    font-size: 24px;
+    color: var(--text-primary);
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .section-title {
-    color: #E66721;
-    font-size: 13px;
-    font-weight: 600;
-    margin-top: 2px;
+    color: var(--accent-color);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
+/* CAIXA DO CABEÇALHO DA LOJA */
 .os-header-box {
-    background-color: #252525;
-    border: 1px solid #333;
-    border-radius: 8px;
-    padding: 10px;
+    border: 1px solid var(--card-border);
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    padding: 14px;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .os-store-name {
-    font-size: 13px;
-    font-weight: bold;
-    color: #ffffff;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-primary);
     margin-bottom: 4px;
+    letter-spacing: 0.5px;
 }
 
 .os-store-info {
-    font-size: 11px;
-    color: #aaa;
+    font-size: 12px;
+    color: var(--text-secondary);
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
 }
 
 .os-whatsapp-link {
-    color: #E66721;
+    color: var(--accent-color);
     text-decoration: none;
 }
 
+/* FORMULÁRIO E CAMPOS */
 .os-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
 }
 
 .os-row {
     display: flex;
-    gap: 10px;
+    gap: 12px;
 }
 
 .os-field {
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 .os-field.full {
@@ -103,196 +129,344 @@ body {
 }
 
 .os-field label {
-    font-size: 10px;
-    font-weight: bold;
-    color: #888;
-    margin-bottom: 4px;
-    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
 }
 
 .os-field input, .os-field textarea {
-    background-color: #2a2a2a;
-    border: 1px solid #3d3d3d;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 13px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text-primary);
+    font-size: 14px;
     outline: none;
     transition: border-color 0.2s;
+    width: 100%;
 }
 
 .os-field input:focus, .os-field textarea:focus {
-    border-color: #E66721;
+    border-color: var(--input-focus);
 }
 
 .os-field textarea {
     resize: vertical;
-    min-height: 55px;
+    min-height: 70px;
 }
 
 .os-section-title {
-    font-size: 11px;
-    font-weight: bold;
-    color: #E66721;
-    margin-top: 10px;
-    border-bottom: 1px solid #333;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--accent-color);
+    border-bottom: 1px solid rgba(230, 103, 33, 0.3);
     padding-bottom: 4px;
+    margin-top: 10px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 
-/* CHECKLIST */
+/* CHECKLIST NA TELA DO SISTEMA */
 .checklist-table {
-    background-color: #252525;
-    border: 1px solid #333;
-    border-radius: 6px;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background-color: var(--input-bg);
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--input-border);
 }
 
-.checklist-header-row {
-    display: grid;
-    grid-template-columns: 1fr 40px 50px 40px;
-    background-color: #1a1a1a;
-    padding: 8px 10px;
-    font-size: 11px;
-    font-weight: bold;
-    color: #888;
-    text-align: center;
-}
-
-.checklist-header-row span:first-child {
-    text-align: left;
-}
-
-.checklist-item-row {
-    display: grid;
-    grid-template-columns: 1fr 40px 50px 40px;
-    padding: 8px 10px;
-    border-top: 1px solid #2a2a2a;
-    font-size: 12px;
+.checklist-item {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
+    padding: 4px 0;
+    border-bottom: 1px dashed #2a2a2a;
 }
 
-.checklist-item-row span:first-child {
-    text-align: left;
-    color: #ddd;
+.checklist-item:last-child {
+    border-bottom: none;
 }
 
-.checklist-item-row input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    accent-color: #E66721;
+.checklist-label {
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.checklist-options {
+    display: flex;
+    gap: 6px;
+}
+
+.chk-btn {
+    background: #252525;
+    border: 1px solid #3d3d3d;
+    color: #888;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 700;
     cursor: pointer;
-    margin: 0 auto;
 }
 
-.checklist-item-row input.check-defeito {
-    accent-color: #ff4d4d;
-}
+.chk-btn.active-ok { background: #1e4620; color: #4caf50; border-color: #2e7d32; }
+.chk-btn.active-def { background: #4a1d1d; color: #f44336; border-color: #c62828; }
+.chk-btn.active-nt { background: #333333; color: #aaa; border-color: #555; }
 
-.checklist-item-row input.check-nt {
-    accent-color: #888;
-}
-
+/* TERMOS E ASSINATURA */
 .os-terms {
     font-size: 10px;
-    color: #777;
-    background-color: #181818;
-    padding: 8px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    background-color: rgba(255, 255, 255, 0.02);
+    padding: 10px;
     border-radius: 6px;
-    border: 1px solid #282828;
+    border: 1px solid var(--card-border);
     margin-top: 5px;
 }
 
-.os-terms p {
-    margin-bottom: 3px;
-}
-
 .os-signature-area {
-    margin-top: 20px;
+    margin-top: 25px;
     text-align: center;
-    font-size: 11px;
-    color: #777;
 }
 
 .signature-line {
-    width: 180px;
-    height: 1px;
-    background-color: #444;
-    margin: 0 auto 5px auto;
+    width: 60%;
+    margin: 0 auto 6px auto;
+    border-top: 1px solid var(--text-secondary);
 }
 
-/* BOTÕES E PREVIEW */
+.os-signature-area span {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+/* BOTÕES DA TELA */
 .button-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 10px;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 button {
-    background-color: #E66721;
-    color: #ffffff;
+    background-color: var(--accent-color);
+    color: #fff;
     border: none;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: bold;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.2s;
-}
-
-button:active {
-    opacity: 0.8;
-}
-
-button.whatsapp-btn {
-    background-color: #25d366;
-    color: #ffffff;
-}
-
-button.secondary {
-    background-color: #333333;
-    color: #ccc;
-}
-
-.os-bottom-action {
-    margin-top: 15px;
-    border-top: 1px solid #2a2a2a;
-    padding-top: 12px;
-}
-
-button.btn-nova-os {
-    background-color: transparent;
-    color: #888;
-    border: 1px solid #3d3d3d;
+    transition: background-color 0.2s;
     width: 100%;
 }
 
+button:hover {
+    background-color: var(--accent-light);
+}
+
+button.whatsapp-btn {
+    background-color: #25D366;
+    color: #fff;
+}
+
 .preview-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.preview-header {
-    text-align: center;
-}
-
-.preview-header p {
-    font-size: 11px;
-    color: #888;
+    background-color: #181818;
+    border: 1px solid var(--accent-color);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 15px;
 }
 
 .preview-box {
-    background-color: #181818;
-    border: 1px solid #333;
-    border-radius: 6px;
+    background-color: #111;
     padding: 12px;
+    border-radius: 6px;
     font-family: monospace;
-    font-size: 11px;
-    color: #25d366;
+    font-size: 12px;
     white-space: pre-wrap;
-    max-height: 350px;
+    color: #ddd;
+    margin: 12px 0;
+    max-height: 250px;
     overflow-y: auto;
+}
+
+/* ============================================================
+   REGRAS ESPECÍFICAS DE IMPRESSÃO / PDF (CORREÇÕES LOGO E CHECKLIST)
+   ============================================================ */
+@media print {
+    @page {
+        size: A4;
+        margin: 8mm 10mm;
+    }
+
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .main-wrapper {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .card {
+        background-color: #ffffff !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    /* Oculta botões e previews no PDF */
+    #btnContainerPrincipal, 
+    #previewContainer, 
+    .checklist-options {
+        display: none !important;
+    }
+
+    /* LOGO AJUSTADA NO PDF (SVG OU IMAGEM) */
+    .logo-container {
+        margin-bottom: 6px !important;
+    }
+    .logo-container svg {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    .logo-container img {
+        max-width: 130px !important;
+        max-height: 50px !important;
+        object-fit: contain !important;
+    }
+
+    .header h1 {
+        color: #000000 !important;
+        font-size: 20px !important;
+    }
+
+    .section-title {
+        color: #E66721 !important;
+        font-size: 12px !important;
+    }
+
+    /* Box da Loja */
+    .os-header-box {
+        background-color: #fcfcfc !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 6px !important;
+        padding: 8px 12px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .os-store-name {
+        color: #000000 !important;
+        font-size: 13px !important;
+    }
+
+    .os-store-info {
+        color: #555555 !important;
+        font-size: 10.5px !important;
+    }
+
+    .os-whatsapp-link {
+        color: #E66721 !important;
+    }
+
+    /* Seções */
+    .os-section-title {
+        color: #E66721 !important;
+        border-bottom: 1.5px solid #E66721 !important;
+        font-size: 11px !important;
+        margin-top: 8px !important;
+        padding-bottom: 2px !important;
+    }
+
+    .os-container {
+        gap: 6px !important;
+    }
+
+    .os-field label {
+        color: #444444 !important;
+        font-size: 9.5px !important;
+        font-weight: 700 !important;
+    }
+
+    .os-field input, 
+    .os-field textarea {
+        background-color: #ffffff !important;
+        border: 1px solid #cccccc !important;
+        border-radius: 4px !important;
+        color: #111111 !important;
+        font-size: 11px !important;
+        padding: 4px 6px !important;
+        box-shadow: none !important;
+    }
+
+    .os-field textarea {
+        min-height: 40px !important;
+    }
+
+    /* CHECKLIST COMPACTO SEM ESPAÇAMENTO DESNECESSÁRIO */
+    .checklist-table {
+        background-color: #ffffff !important;
+        border: 1px solid #cccccc !important;
+        padding: 4px 8px !important;
+        gap: 1px !important;
+    }
+
+    .checklist-item {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 2px 0 !important;
+        margin: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        border-bottom: 1px dashed #e5e5e5 !important;
+    }
+
+    .checklist-item:last-child {
+        border-bottom: none !important;
+    }
+
+    .checklist-label {
+        color: #222222 !important;
+        font-size: 10.5px !important;
+    }
+
+    /* Mostra a tag ex: [ OK ] bem alinhada à direita */
+    .checklist-item::after {
+        content: attr(data-selected);
+        font-weight: 800;
+        font-size: 10.5px;
+        color: #E66721;
+        letter-spacing: 0.5px;
+    }
+
+    /* Termos e Assinatura */
+    .os-terms {
+        background-color: #fafafa !important;
+        border: 1px solid #e0e0e0 !important;
+        color: #555555 !important;
+        font-size: 8.5px !important;
+        padding: 6px 8px !important;
+        margin-top: 6px !important;
+    }
+
+    .os-signature-area {
+        margin-top: 18px !important;
+    }
+
+    .signature-line {
+        border-top: 1px solid #777777 !important;
+    }
+
+    .os-signature-area span {
+        color: #444444 !important;
+        font-size: 10px !important;
+    }
 }
