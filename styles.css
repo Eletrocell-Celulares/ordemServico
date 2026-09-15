@@ -136,7 +136,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* FIXA ALTURA E APARÊNCIA UNIFORME DOS CAMPOS DE TEXTO E DATA NO IOS */
 .os-field input, 
 .os-field textarea {
     width: 100%;
@@ -380,44 +379,55 @@ button.secondary {
 }
 
 /* =========================================================
-   CONFIGURAÇÃO EXCLUSIVA PARA IMPRESSÃO / GERAR PDF (A4 - 1 PÁGINA)
+   CONFIGURAÇÃO DE IMPRESSÃO (PDF LIMPO E CLARO)
    ========================================================= */
 @media print {
     @page {
-        margin: 10mm;
+        margin: 8mm;
         size: A4 portrait;
     }
 
-    body {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    html, body {
         background-color: #ffffff !important;
+        background: #ffffff !important;
         color: #000000 !important;
         padding: 0 !important;
+        margin: 0 !important;
     }
 
-    .main-wrapper {
-        max-width: 100% !important;
-        width: 100% !important;
-    }
-
-    .card {
+    .main-wrapper, .card {
         background-color: #ffffff !important;
+        background: #ffffff !important;
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
+    /* ESCONDE ELEMENTOS QUE NÃO DEVEM IR PARA O PDF */
     button, 
     .btn-nova-os, 
     .preview-container, 
+    #previewContainer,
     #btnContainerPrincipal, 
     .os-bottom-action {
         display: none !important;
     }
 
-    .os-container {
+    /* FORÇA A EXIBIÇÃO DO FORMULÁRIO COMPLETO DA O.S. */
+    #osDocumento, .os-container {
+        display: block !important;
         background: #ffffff !important;
         border: 1px solid #cccccc !important;
         color: #000000 !important;
+        padding: 10px !important;
     }
 
     .os-header-box {
@@ -439,7 +449,7 @@ button.secondary {
 
     .os-field input, 
     .os-field textarea {
-        background: #f9f9f9 !important;
+        background: #fdfdfd !important;
         border: 1px solid #cccccc !important;
         color: #000000 !important;
     }
@@ -450,7 +460,7 @@ button.secondary {
     }
 
     .checklist-header-row {
-        background: #eeeeee !important;
+        background: #f0f0f0 !important;
         color: #d35400 !important;
         border-bottom: 1px solid #cccccc !important;
     }
