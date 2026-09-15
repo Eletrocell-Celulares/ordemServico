@@ -42,7 +42,7 @@ function renderChecklist() {
     });
 }
 
-// GARANTE QUE APENAS UMA OPÇÃO SEJA SELECIONADA POR ITEM
+// GARANTE APENAS UMA SELEÇÃO POR ITEM NO CHECKLIST
 function uncheckOthers(current, groupName) {
     if (current.checked) {
         const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
@@ -52,7 +52,7 @@ function uncheckOthers(current, groupName) {
     }
 }
 
-// GERA O TEXTO DA MENSAGEM DO WHATSAPP
+// MENSAGEM FORMATADA PARA O WHATSAPP
 function gerarTextoWhatsapp() {
     const osNum = document.getElementById('val-os').value || 'N/A';
     const dataEntrada = document.getElementById('dataEntrada').value || 'Não informada';
@@ -113,7 +113,7 @@ function gerarTextoWhatsapp() {
            `💬 *Acompanhe seu serviço ou fale conosco pelo WhatsApp!*`;
 }
 
-// INICIALIZAÇÃO E EVENTOS
+// INICIALIZAÇÃO
 document.addEventListener('DOMContentLoaded', () => {
     renderChecklist();
 
@@ -172,14 +172,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // GERAR PDF VIA MODO NATIVO FORÇANDO FUNDO CLARO
+    // GERAÇÃO DE PDF COM NOME FORMATADO: "eletrocell⚡️| ordem de serviço - Nome do Cliente - Data"
     if (btnGerarPdf) {
         btnGerarPdf.addEventListener('click', () => {
             const cliente = document.getElementById('val-cliente').value.trim() || 'Cliente';
-            const osNum = document.getElementById('val-os').value.trim() || '001';
+            const dataEntrada = document.getElementById('dataEntrada').value || 'SemData';
+
+            // Formata o nome do arquivo exatamente como desejado
+            const nomeArquivo = `eletrocell⚡️| ordem de serviço - ${cliente} - ${dataEntrada}`;
 
             const tituloOriginal = document.title;
-            document.title = `OS_${osNum}_${cliente}`;
+            document.title = nomeArquivo;
 
             const estadoOsAnterior = osDocumento.style.display;
             const estadoPreviewAnterior = previewContainer ? previewContainer.style.display : 'none';
@@ -187,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
             osDocumento.style.display = 'block';
             if (previewContainer) previewContainer.style.display = 'none';
 
-            // Injeta CSS temporário para forçar fundo branco absoluto no PDF
+            // Injeta regra CSS com força total para que o iOS Safari processe o fundo como BRANCO nativo
             const styleImpressao = document.createElement('style');
             styleImpressao.id = 'estilo-impressao-temp';
             styleImpressao.innerHTML = `
