@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // GERAR PDF COM NOME PERSONALIZADO (CLIENTE E DATA)
+    // GERAR PDF EXIBINDO O FORMULÁRIO COMPLETO E COM NOME PERSONALIZADO
     btnGerarPdf.addEventListener('click', () => {
         const tituloOriginal = document.title;
         const cliente = document.getElementById('val-cliente').value.trim();
@@ -174,15 +174,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cliente) complemento += ` - ${cliente}`;
         if (dataEntrada) complemento += ` - ${dataEntrada}`;
 
-        // Atualiza o título da página temporariamente antes de disparar o print
+        // Altera temporariamente o título da página para dar nome ao PDF
         document.title = `ELETROCELL ⚡️ | Ordem de Serviço${complemento}`;
 
+        // Garante que a O.S. completa fique visível para o gerador de PDF
+        const estadoOsAnterior = osDocumento.style.display;
+        const estadoPreviewAnterior = previewContainer.style.display;
+
+        osDocumento.style.display = 'block';
+        previewContainer.style.display = 'none';
+
+        // Dispara a janela de PDF do iOS/Navegador
         window.print();
 
-        // Restaura o título original após abrir a janela de impressão
+        // Restaura a visualização anterior da tela
         setTimeout(() => {
             document.title = tituloOriginal;
-        }, 1000);
+            osDocumento.style.display = estadoOsAnterior;
+            previewContainer.style.display = estadoPreviewAnterior;
+        }, 800);
     });
 
     btnLimparOs.addEventListener('click', () => {
