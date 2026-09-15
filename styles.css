@@ -1,57 +1,37 @@
-/* ============================================================
-   ESTILOS GERAIS DA TELA (DARK MODE CLEAN)
-   ============================================================ */
 :root {
-    --bg-color: #121212;
-    --card-bg: #1e1e1e;
-    --card-border: #2c2c2c;
-    --accent-color: #E66721;
-    --accent-light: #ff8c42;
-    --text-primary: #f0f0f0;
-    --text-secondary: #a0a0a0;
-    --input-bg: #181818;
-    --input-border: #333333;
-    --input-focus: #E66721;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --primary-color: #E66721;
+    --bg-dark: #121212;
+    --card-dark: #1e1e1e;
+    --text-dark: #e0e0e0;
+    --border-dark: #333333;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 20px;
     display: flex;
     justify-content: center;
-    padding: 20px 10px;
-    min-height: 100vh;
 }
 
 .main-wrapper {
     width: 100%;
-    max-width: 650px;
+    max-width: 800px;
 }
 
 .card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 24px 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    background-color: var(--card-dark);
+    border: 1px solid var(--border-dark);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
 }
 
 .logo-container {
     text-align: center;
     margin-bottom: 12px;
-}
-
-.logo-container svg, .logo-container img {
-    display: inline-block;
-    max-width: 160px;
-    height: auto;
 }
 
 .header {
@@ -60,68 +40,69 @@ body {
 }
 
 .header h1 {
+    color: #ffffff;
+    margin: 0 0 4px 0;
     font-size: 24px;
-    color: var(--text-primary);
-    font-weight: 800;
     letter-spacing: 1px;
-    text-transform: uppercase;
 }
 
 .section-title {
-    color: var(--accent-color);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    color: var(--primary-color);
+    font-size: 13px;
+    font-weight: 600;
 }
 
-/* CAIXA DO CABEÇALHO DA LOJA */
 .os-header-box {
-    border: 1px solid var(--card-border);
-    background-color: rgba(255, 255, 255, 0.02);
-    border-radius: 10px;
-    padding: 14px;
-    text-align: center;
+    background-color: #252525;
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+    padding: 12px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .os-store-name {
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+    font-size: 14px;
 }
 
 .os-store-info {
-    font-size: 12px;
-    color: var(--text-secondary);
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
+    font-size: 12px;
+    color: #b0b0b0;
 }
 
 .os-whatsapp-link {
-    color: var(--accent-color);
+    color: var(--primary-color);
     text-decoration: none;
+    font-weight: 600;
 }
 
-/* FORMULÁRIO E CAMPOS */
 .os-container {
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
 
-.os-row {
-    display: flex;
-    gap: 12px;
+.os-section-title {
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 4px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
 }
 
 .os-field {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 5px;
 }
 
 .os-field.full {
@@ -129,61 +110,68 @@ body {
 }
 
 .os-field label {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    color: var(--text-secondary);
+    color: #aaaaaa;
+    margin-bottom: 4px;
     letter-spacing: 0.5px;
 }
 
-.os-field input, .os-field textarea {
-    background-color: var(--input-bg);
-    border: 1px solid var(--input-border);
-    border-radius: 8px;
-    padding: 10px 12px;
-    color: var(--text-primary);
-    font-size: 14px;
+.os-field input, 
+.os-field textarea {
+    background-color: #2a2a2a;
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 8px 10px;
+    font-size: 13px;
     outline: none;
     transition: border-color 0.2s;
-    width: 100%;
 }
 
-.os-field input:focus, .os-field textarea:focus {
-    border-color: var(--input-focus);
+.os-field input:focus, 
+.os-field textarea:focus {
+    border-color: var(--primary-color);
 }
 
 .os-field textarea {
     resize: vertical;
-    min-height: 70px;
+    min-height: 50px;
 }
 
-.os-section-title {
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--accent-color);
-    border-bottom: 1px solid rgba(230, 103, 33, 0.3);
-    padding-bottom: 4px;
-    margin-top: 10px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-
-/* CHECKLIST NA TELA DO SISTEMA */
+/* Checklist Original */
 .checklist-table {
+    background-color: #252525;
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    background-color: var(--input-bg);
-    padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid var(--input-border);
+}
+
+.checklist-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #2d2d2d;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.chk-headers {
+    display: flex;
+    gap: 20px;
 }
 
 .checklist-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 0;
-    border-bottom: 1px dashed #2a2a2a;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-dark);
 }
 
 .checklist-item:last-child {
@@ -191,8 +179,8 @@ body {
 }
 
 .checklist-label {
-    font-size: 13px;
-    color: var(--text-primary);
+    font-size: 12px;
+    color: #e0e0e0;
 }
 
 .checklist-options {
@@ -201,118 +189,107 @@ body {
 }
 
 .chk-btn {
-    background: #252525;
-    border: 1px solid #3d3d3d;
-    color: #888;
-    padding: 4px 8px;
-    border-radius: 5px;
+    background-color: #333333;
+    border: 1px solid #444444;
+    color: #aaaaaa;
+    padding: 4px 10px;
+    border-radius: 4px;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.2s;
 }
 
-.chk-btn.active-ok { background: #1e4620; color: #4caf50; border-color: #2e7d32; }
-.chk-btn.active-def { background: #4a1d1d; color: #f44336; border-color: #c62828; }
-.chk-btn.active-nt { background: #333333; color: #aaa; border-color: #555; }
+.chk-btn.active-ok {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
 
-/* TERMOS E ASSINATURA */
 .os-terms {
-    font-size: 10px;
-    color: var(--text-secondary);
-    line-height: 1.4;
-    background-color: rgba(255, 255, 255, 0.02);
-    padding: 10px;
+    background-color: #252525;
+    border: 1px solid var(--border-dark);
     border-radius: 6px;
-    border: 1px solid var(--card-border);
-    margin-top: 5px;
+    padding: 10px;
+    font-size: 10px;
+    color: #aaaaaa;
+    line-height: 1.4;
 }
 
 .os-signature-area {
-    margin-top: 25px;
+    margin-top: 20px;
     text-align: center;
 }
 
 .signature-line {
     width: 60%;
     margin: 0 auto 6px auto;
-    border-top: 1px solid var(--text-secondary);
+    border-top: 1px solid #777777;
 }
 
 .os-signature-area span {
     font-size: 11px;
-    color: var(--text-secondary);
+    color: #aaaaaa;
 }
 
-/* BOTÕES DA TELA */
 .button-group {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-button {
-    background-color: var(--accent-color);
-    color: #fff;
+.button-group button {
+    flex: 1;
+    background-color: var(--primary-color);
+    color: white;
     border: none;
-    padding: 12px 16px;
-    border-radius: 8px;
+    padding: 12px;
+    border-radius: 6px;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s;
-    width: 100%;
+    transition: opacity 0.2s;
 }
 
-button:hover {
-    background-color: var(--accent-light);
+.button-group button:hover {
+    opacity: 0.9;
 }
 
-button.whatsapp-btn {
-    background-color: #25D366;
-    color: #fff;
+.whatsapp-btn {
+    background-color: #25D366 !important;
 }
 
 .preview-container {
-    background-color: #181818;
-    border: 1px solid var(--accent-color);
-    border-radius: 12px;
-    padding: 16px;
-    margin-top: 15px;
+    margin-top: 20px;
+    background-color: #252525;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-dark);
 }
 
 .preview-box {
-    background-color: #111;
+    background-color: #1a1a1a;
+    border: 1px solid var(--border-dark);
     padding: 12px;
     border-radius: 6px;
     font-family: monospace;
     font-size: 12px;
     white-space: pre-wrap;
-    color: #ddd;
-    margin: 12px 0;
-    max-height: 250px;
-    overflow-y: auto;
+    color: #e0e0e0;
+    margin: 10px 0;
 }
 
-/* ============================================================
-   REGRAS ESPECÍFICAS DE IMPRESSÃO / PDF (CORREÇÕES LOGO E CHECKLIST)
-   ============================================================ */
+/* Impressão Limpa */
 @media print {
     @page {
-        size: A4;
-        margin: 8mm 10mm;
+        size: A4 portrait;
+        margin: 10mm;
     }
 
     body {
         background-color: #ffffff !important;
         color: #000000 !important;
         padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .main-wrapper {
-        max-width: 100% !important;
-        width: 100% !important;
     }
 
     .card {
@@ -322,151 +299,34 @@ button.whatsapp-btn {
         padding: 0 !important;
     }
 
-    /* Oculta botões e previews no PDF */
+    .os-header-box, .checklist-table, .os-terms, .preview-container {
+        background-color: #f9f9f9 !important;
+        border-color: #cccccc !important;
+    }
+
+    .header h1, .os-store-name, .checklist-label, .os-field input, .os-field textarea, .preview-box {
+        color: #000000 !important;
+    }
+
+    .os-field input, .os-field textarea {
+        background-color: #ffffff !important;
+        border-color: #cccccc !important;
+    }
+
+    .chk-btn {
+        background-color: #e0e0e0 !important;
+        color: #333333 !important;
+        border-color: #cccccc !important;
+    }
+
+    .chk-btn.active-ok {
+        background-color: var(--primary-color) !important;
+        color: #ffffff !important;
+    }
+
     #btnContainerPrincipal, 
-    #previewContainer, 
-    .checklist-options {
+    #previewContainer .whatsapp-btn,
+    .os-bottom-action {
         display: none !important;
-    }
-
-    /* LOGO AJUSTADA NO PDF (SVG OU IMAGEM) */
-    .logo-container {
-        margin-bottom: 6px !important;
-    }
-    .logo-container svg {
-        width: 50px !important;
-        height: 50px !important;
-    }
-    .logo-container img {
-        max-width: 130px !important;
-        max-height: 50px !important;
-        object-fit: contain !important;
-    }
-
-    .header h1 {
-        color: #000000 !important;
-        font-size: 20px !important;
-    }
-
-    .section-title {
-        color: #E66721 !important;
-        font-size: 12px !important;
-    }
-
-    /* Box da Loja */
-    .os-header-box {
-        background-color: #fcfcfc !important;
-        border: 1px solid #e0e0e0 !important;
-        border-radius: 6px !important;
-        padding: 8px 12px !important;
-        margin-bottom: 10px !important;
-    }
-
-    .os-store-name {
-        color: #000000 !important;
-        font-size: 13px !important;
-    }
-
-    .os-store-info {
-        color: #555555 !important;
-        font-size: 10.5px !important;
-    }
-
-    .os-whatsapp-link {
-        color: #E66721 !important;
-    }
-
-    /* Seções */
-    .os-section-title {
-        color: #E66721 !important;
-        border-bottom: 1.5px solid #E66721 !important;
-        font-size: 11px !important;
-        margin-top: 8px !important;
-        padding-bottom: 2px !important;
-    }
-
-    .os-container {
-        gap: 6px !important;
-    }
-
-    .os-field label {
-        color: #444444 !important;
-        font-size: 9.5px !important;
-        font-weight: 700 !important;
-    }
-
-    .os-field input, 
-    .os-field textarea {
-        background-color: #ffffff !important;
-        border: 1px solid #cccccc !important;
-        border-radius: 4px !important;
-        color: #111111 !important;
-        font-size: 11px !important;
-        padding: 4px 6px !important;
-        box-shadow: none !important;
-    }
-
-    .os-field textarea {
-        min-height: 40px !important;
-    }
-
-    /* CHECKLIST COMPACTO SEM ESPAÇAMENTO DESNECESSÁRIO */
-    .checklist-table {
-        background-color: #ffffff !important;
-        border: 1px solid #cccccc !important;
-        padding: 4px 8px !important;
-        gap: 1px !important;
-    }
-
-    .checklist-item {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 2px 0 !important;
-        margin: 0 !important;
-        height: auto !important;
-        min-height: 0 !important;
-        border-bottom: 1px dashed #e5e5e5 !important;
-    }
-
-    .checklist-item:last-child {
-        border-bottom: none !important;
-    }
-
-    .checklist-label {
-        color: #222222 !important;
-        font-size: 10.5px !important;
-    }
-
-    /* Mostra a tag ex: [ OK ] bem alinhada à direita */
-    .checklist-item::after {
-        content: attr(data-selected);
-        font-weight: 800;
-        font-size: 10.5px;
-        color: #E66721;
-        letter-spacing: 0.5px;
-    }
-
-    /* Termos e Assinatura */
-    .os-terms {
-        background-color: #fafafa !important;
-        border: 1px solid #e0e0e0 !important;
-        color: #555555 !important;
-        font-size: 8.5px !important;
-        padding: 6px 8px !important;
-        margin-top: 6px !important;
-    }
-
-    .os-signature-area {
-        margin-top: 18px !important;
-    }
-
-    .signature-line {
-        border-top: 1px solid #777777 !important;
-    }
-
-    .os-signature-area span {
-        color: #444444 !important;
-        font-size: 10px !important;
     }
 }
