@@ -42,7 +42,6 @@ function renderChecklist() {
     });
 }
 
-// GARANTE APENAS UMA SELEÇÃO POR ITEM NO CHECKLIST
 function uncheckOthers(current, groupName) {
     if (current.checked) {
         const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
@@ -52,7 +51,7 @@ function uncheckOthers(current, groupName) {
     }
 }
 
-// MENSAGEM FORMATADA PARA O WHATSAPP
+// FORMATAR TEXTO DO RESUMO/WHATSAPP
 function gerarTextoWhatsapp() {
     const osNum = document.getElementById('val-os').value || 'N/A';
     const dataEntrada = document.getElementById('dataEntrada').value || 'Não informada';
@@ -113,7 +112,7 @@ function gerarTextoWhatsapp() {
            `💬 *Acompanhe seu serviço ou fale conosco pelo WhatsApp!*`;
 }
 
-// INICIALIZAÇÃO
+// INICIALIZAÇÃO DE EVENTOS
 document.addEventListener('DOMContentLoaded', () => {
     renderChecklist();
 
@@ -172,70 +171,111 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // GERAÇÃO DE PDF COM NOME FORMATADO: "eletrocell⚡️| ordem de serviço - Nome do Cliente - Data"
+    // GERAÇÃO DE PDF COM A LOGO CORRETA (WI-FI/SINAL) E NOME FORMATADO
     if (btnGerarPdf) {
         btnGerarPdf.addEventListener('click', () => {
             const cliente = document.getElementById('val-cliente').value.trim() || 'Cliente';
             const dataEntrada = document.getElementById('dataEntrada').value || 'SemData';
 
-            // Formata o nome do arquivo exatamente como desejado
             const nomeArquivo = `eletrocell⚡️| ordem de serviço - ${cliente} - ${dataEntrada}`;
+            const conteudoHtml = osDocumento.outerHTML;
 
-            const tituloOriginal = document.title;
-            document.title = nomeArquivo;
-
-            const estadoOsAnterior = osDocumento.style.display;
-            const estadoPreviewAnterior = previewContainer ? previewContainer.style.display : 'none';
+            const janelaImpressao = window.open('', '_blank', 'width=800,height=900');
             
-            osDocumento.style.display = 'block';
-            if (previewContainer) previewContainer.style.display = 'none';
+            janelaImpressao.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>${nomeArquivo}</title>
+                    <style>
+                        * {
+                            box-sizing: border-box;
+                            margin: 0;
+                            padding: 0;
+                            -webkit-print-color-adjust: exact !important;
+                            print-color-adjust: exact !important;
+                        }
+                        body {
+                            background-color: #ffffff !important;
+                            color: #000000 !important;
+                            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                            padding: 20px;
+                        }
+                        .pdf-logo-wrapper {
+                            text-align: center;
+                            margin-bottom: 12px;
+                        }
+                        .pdf-logo-wrapper svg {
+                            width: 60px;
+                            height: 60px;
+                        }
+                        .os-header-box {
+                            text-align: center;
+                            background: #f5f5f5 !important;
+                            border: 1px solid #cccccc;
+                            border-radius: 8px;
+                            padding: 12px;
+                            margin-bottom: 15px;
+                        }
+                        .os-store-name { font-weight: bold; font-size: 14px; margin-bottom: 4px; }
+                        .os-store-info { font-size: 11px; color: #333; }
+                        .os-container {
+                            background: #ffffff !important;
+                            border: 1px solid #cccccc;
+                            border-radius: 8px;
+                            padding: 15px;
+                        }
+                        .os-row { display: flex; gap: 10px; margin-bottom: 10px; }
+                        .os-field { flex: 1; display: flex; flex-direction: column; }
+                        .os-field label { font-size: 10px; font-weight: bold; color: #555; text-transform: uppercase; margin-bottom: 3px; }
+                        .os-field input, .os-field textarea {
+                            background: #ffffff !important;
+                            border: 1px solid #cccccc !important;
+                            color: #000000 !important;
+                            padding: 6px 8px;
+                            font-size: 12px;
+                            border-radius: 4px;
+                            width: 100%;
+                        }
+                        .os-section-title {
+                            font-size: 11px; font-weight: bold; color: #cc4a00;
+                            margin: 14px 0 8px 0; border-bottom: 1px solid #ddd; padding-bottom: 3px;
+                        }
+                        .checklist-table { border: 1px solid #ccc; border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
+                        .checklist-header-row { display: grid; grid-template-columns: 1fr 40px 50px 40px; background: #eee; font-weight: bold; font-size: 10px; padding: 6px; text-align: center; }
+                        .checklist-header-row span:first-child { text-align: left; }
+                        .checklist-item-row { display: grid; grid-template-columns: 1fr 40px 50px 40px; padding: 6px; border-top: 1px solid #eee; font-size: 11px; text-align: center; }
+                        .checklist-item-row span:first-child { text-align: left; }
+                        .os-terms { font-size: 9px; color: #666; background: #f9f9f9; padding: 8px; border: 1px solid #eee; margin-top: 10px; border-radius: 4px; }
+                        .os-signature-area { margin-top: 25px; text-align: center; font-size: 10px; color: #555; }
+                        .signature-line { width: 200px; height: 1px; background: #888; margin: 0 auto 5px auto; }
+                        @media print {
+                            body { padding: 0; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="pdf-logo-wrapper">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="2" width="14" height="20" rx="3" stroke="#CC4A00" stroke-width="2" fill="none" />
+                            <path d="M7.5 7.5C8.8 6.2 10.3 5.5 12 5.5C13.7 5.5 15.2 6.2 16.5 7.5" stroke="#CC4A00" stroke-width="1.8" stroke-linecap="round" />
+                            <path d="M9.2 10.2C10 9.4 11 9 12 9C13 9 14 9.4 14.8 10.2" stroke="#CC4A00" stroke-width="1.8" stroke-linecap="round" />
+                            <path d="M10.8 13C11.1 12.7 11.5 12.5 12 12.5C12.5 12.5 12.9 12.7 13.2 13" stroke="#CC4A00" stroke-width="1.8" stroke-linecap="round" />
+                            <circle cx="12" cy="16.5" r="1" fill="#CC4A00" />
+                        </svg>
+                    </div>
+                    ${conteudoHtml}
+                </body>
+                </html>
+            `);
 
-            // Injeta regra CSS com força total para que o iOS Safari processe o fundo como BRANCO nativo
-            const styleImpressao = document.createElement('style');
-            styleImpressao.id = 'estilo-impressao-temp';
-            styleImpressao.innerHTML = `
-                @media print {
-                    * {
-                        -webkit-print-color-adjust: exact !important;
-                        print-color-adjust: exact !important;
-                        background-color: #ffffff !important;
-                        color: #000000 !important;
-                        border-color: #cccccc !important;
-                        box-shadow: none !important;
-                    }
-                    html, body, .main-wrapper, .card, #osDocumento, .os-container {
-                        background: #ffffff !important;
-                        background-color: #ffffff !important;
-                        color: #000000 !important;
-                    }
-                    .os-header-box, .os-terms {
-                        background: #f5f5f5 !important;
-                        background-color: #f5f5f5 !important;
-                    }
-                    .os-field input, .os-field textarea {
-                        background: #ffffff !important;
-                        background-color: #ffffff !important;
-                        color: #000000 !important;
-                        border: 1px solid #cccccc !important;
-                        -webkit-text-fill-color: #000000 !important;
-                    }
-                    button, .btn-nova-os, .preview-container, #previewContainer, #btnContainerPrincipal, .os-bottom-action {
-                        display: none !important;
-                    }
-                }
-            `;
-            document.head.appendChild(styleImpressao);
-
-            window.print();
+            janelaImpressao.document.close();
+            janelaImpressao.focus();
 
             setTimeout(() => {
-                document.title = tituloOriginal;
-                osDocumento.style.display = estadoOsAnterior;
-                if (previewContainer) previewContainer.style.display = estadoPreviewAnterior;
-                
-                const elemEstilo = document.getElementById('estilo-impressao-temp');
-                if (elemEstilo) elemEstilo.remove();
-            }, 500);
+                janelaImpressao.print();
+                janelaImpressao.close();
+            }, 300);
         });
     }
 
