@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordem de Serviço - Módulo X</title>
+    <title>Ordem de Serviço - Eletrocell</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,158 +12,278 @@
             
             <!-- LOGO & CABEÇALHO DA LOJA -->
             <div class="logo-container">
-                <!-- Se for usar tag <img> com imagem PNG/JPG, descomente a linha abaixo e insira o caminho da imagem: -->
-                <!-- <img src="sua-logo.png" alt="Logo Módulo X" class="app-logo"> -->
-
-                <!-- Logo SVG Padrão -->
-                <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100" height="100" rx="20" fill="#E66721"/>
-                    <path d="M30 30L50 50L30 70M70 30L50 50L70 70" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="2" width="14" height="20" rx="3" stroke="#E66721" stroke-width="2" fill="none" />
+                    <path d="M7.5 7.5C8.8 6.2 10.3 5.5 12 5.5C13.7 5.5 15.2 6.2 16.5 7.5" stroke="#E66721" stroke-width="1.8" stroke-linecap="round" />
+                    <path d="M9.2 10.2C10 9.4 11 9 12 9C13 9 14 9.4 14.8 10.2" stroke="#E66721" stroke-width="1.8" stroke-linecap="round" />
+                    <path d="M10.8 13C11.1 12.7 11.5 12.5 12 12.5C12.5 12.5 12.9 12.7 13.2 13" stroke="#E66721" stroke-width="1.8" stroke-linecap="round" />
+                    <circle cx="12" cy="16.5" r="1" fill="#E66721" />
                 </svg>
             </div>
 
             <div class="header">
-                <h1>MÓDULO X</h1>
-                <span class="section-title">ASSISTÊNCIA TÉCNICA</span>
+                <h1>ELETROCELL ⚡</h1>
+                <span class="section-title">| Ordem de Serviço (O.S.) |</span>
             </div>
 
             <div class="os-header-box">
-                <div class="os-store-name">MÓDULO X - REPAROS E MANUTENÇÃO</div>
+                <div class="os-store-name">ELETROCELL ASSISTÊNCIA TÉCNICA</div>
                 <div class="os-store-info">
-                    <span>Especializada em Smartphones, Tablets e Eletrônicos</span>
-                    <span>Contato / WhatsApp: <a href="#" class="os-whatsapp-link">(00) 00000-0000</a></span>
+                    <span>Manutenção Especializada em Smartphones e Tablets</span>
+                    <span>Contato / WhatsApp: <a href="#" class="os-whatsapp-link">(75) 99123-4567</a></span>
                 </div>
             </div>
 
             <!-- FORMULÁRIO DADOS DA OS -->
             <form id="osForm" class="os-container" onsubmit="return false;">
                 
-                <div class="os-section-title">Dados do Cliente & Aparelho</div>
-                
-                <div class="os-row">
-                    <div class="os-field">
-                        <label>NOME DO CLIENTE</label>
-                        <input type="text" id="clienteNome" placeholder="Ex: João Silva">
-                    </div>
-                    <div class="os-field">
-                        <label>CONTATO / WHATSAPP</label>
-                        <input type="text" id="clienteContato" placeholder="(00) 00000-0000">
-                    </div>
+                <div class="os-field full">
+                    <label>Nº DA O.S.</label>
+                    <input type="text" id="osNumero" placeholder="Ex: 001">
                 </div>
 
-                <div class="os-row">
-                    <div class="os-field">
-                        <label>MODELO DO APARELHO</label>
-                        <input type="text" id="aparelhoModelo" placeholder="Ex: iPhone 13 / Moto G60">
+                <div class="os-field full">
+                    <label>DATA DE ENTRADA</label>
+                    <input type="text" id="dataEntrada" placeholder="15 de set. de 2026">
+                </div>
+
+                <div class="os-field full">
+                    <label>ATENDENTE RESPONSÁVEL</label>
+                    <input type="text" id="atendenteNome" placeholder="Nome do atendente">
+                </div>
+
+                <div class="os-field full">
+                    <label>PREVISÃO DE ENTREGA</label>
+                    <input type="text" id="previsaoTermino" placeholder="Ex: 16/09 às 17h">
+                </div>
+
+                <!-- DADOS DO CLIENTE -->
+                <div class="os-section-title">DADOS DO CLIENTE</div>
+                
+                <div class="os-field full">
+                    <label>NOME COMPLETO</label>
+                    <input type="text" id="clienteNome" placeholder="Ricardo Rocha">
+                </div>
+
+                <div class="os-field full">
+                    <label>TELEFONE / WHATSAPP</label>
+                    <input type="text" id="clienteContato" placeholder="(00) 00000-0000">
+                </div>
+
+                <div class="os-field full">
+                    <label>CPF</label>
+                    <input type="text" id="clienteCpf" placeholder="000.000.000-00">
+                </div>
+
+                <!-- DADOS DO APARELHO -->
+                <div class="os-section-title">DADOS DO APARELHO</div>
+                
+                <div class="os-field full">
+                    <label>MODELO DO APARELHO</label>
+                    <input type="text" id="aparelhoModelo" placeholder="Ex: iPhone 15 Pro Max">
+                </div>
+
+                <div class="os-field full">
+                    <label>COR</label>
+                    <input type="text" id="aparelhoCor" placeholder="Ex: Cinza espacial">
+                </div>
+
+                <div class="os-field full">
+                    <label>IMEI / N° DE SÉRIE</label>
+                    <input type="text" id="aparelhoImei" placeholder="Número de série ou IMEI">
+                </div>
+
+                <div class="os-field full">
+                    <label>SENHA DE DESBLOQUEIO</label>
+                    <input type="text" id="aparelhoSenha" placeholder="Senha ou padrão">
+                </div>
+
+                <div class="os-field full">
+                    <label>CONTA ICLOUD / APPLE ID (E-MAIL E SENHA - SE NECESSÁRIO PARA TESTES)</label>
+                    <input type="text" id="aparelhoIcloud" placeholder="Deixar em branco se preferir não informar">
+                </div>
+
+                <!-- CHECKLIST DE ENTRADA -->
+                <div class="os-section-title">3. CHECKLIST DE ENTRADA (Testado no Balcão)</div>
+                
+                <div class="checklist-table">
+                    <div class="checklist-header-row">
+                        <span>ITEM / FUNÇÃO</span>
+                        <div class="chk-headers">
+                            <span>OK</span>
+                            <span>DEFEITO</span>
+                            <span>N/T</span>
+                        </div>
                     </div>
-                    <div class="os-field">
-                        <label>IMEI / Nº DE SÉRIE</label>
-                        <input type="text" id="aparelhoImei" placeholder="Opcional">
+                    
+                    <div class="checklist-item" data-item="Tela / Touchscreen" data-selected="OK">
+                        <span class="checklist-label">Tela / Touchscreen</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Carregamento / Conector" data-selected="OK">
+                        <span class="checklist-label">Carregamento / Conector</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Câmera Traseira" data-selected="OK">
+                        <span class="checklist-label">Câmera Traseira</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Câmera Frontal" data-selected="OK">
+                        <span class="checklist-label">Câmera Frontal</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Microfone Principal" data-selected="OK">
+                        <span class="checklist-label">Microfone Principal</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Auricular (Ligação)" data-selected="OK">
+                        <span class="checklist-label">Auricular (Ligação)</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Alto-falante (Som)" data-selected="OK">
+                        <span class="checklist-label">Alto-falante (Som)</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Wi-Fi / Bluetooth" data-selected="OK">
+                        <span class="checklist-label">Wi-Fi / Bluetooth</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Sinal de Chip / Rede" data-selected="OK">
+                        <span class="checklist-label">Sinal de Chip / Rede</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Botões Volume / Power" data-selected="OK">
+                        <span class="checklist-label">Botões Volume / Power</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Biometria / Face ID" data-selected="OK">
+                        <span class="checklist-label">Biometria / Face ID</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Sensor de Proximidade" data-selected="OK">
+                        <span class="checklist-label">Sensor de Proximidade</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-item="Carcaça / Vidro Traseiro" data-selected="OK">
+                        <span class="checklist-label">Carcaça / Vidro Traseiro</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="os-field full">
-                    <label>DEFEITO RELATADO / RECLAMAÇÃO</label>
+                    <label>SAÚDE DA BATERIA (%)</label>
+                    <input type="text" id="saudeBateria" placeholder="Ex: 90%">
+                </div>
+
+                <div class="os-field full">
+                    <label>ACESSÓRIOS DEIXADOS</label>
+                    <input type="text" id="acessoriosDeixados" placeholder="Ex: Apenas o aparelho">
+                </div>
+
+                <div class="os-field full">
+                    <label>OBSERVAÇÕES DE AVARIAS VISÍVEIS (TRINCADOS, RISCOS, AMASSADOS NA CARCAÇA, MARCAS DE ABERTURA PRÉVIA)</label>
+                    <textarea id="observacoesAvarias" placeholder="Descreva o estado físico externo..."></textarea>
+                </div>
+
+                <!-- DEFEITO RELATADO -->
+                <div class="os-section-title">4. DEFEITO RELATADO / SERVIÇO SOLICITADO</div>
+                
+                <div class="os-field full">
+                    <label>RELATO DO PROBLEMA</label>
                     <textarea id="defeitoRelatado" placeholder="Descreva o problema informado pelo cliente..."></textarea>
                 </div>
 
-                <!-- CHECKLIST DE ENTRADA -->
-                <div class="os-section-title">Checklist de Entrada</div>
-                
-                <div class="checklist-table">
-                    
-                    <div class="checklist-item" data-selected="[ OK ]">
-                        <span class="checklist-label">1. Aparelho Liga</span>
-                        <div class="checklist-options">
-                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
-                        </div>
-                    </div>
+                <!-- VALORES E CONDIÇÃO DE PAGAMENTO -->
+                <div class="os-section-title">5. VALORES E CONDIÇÃO DE PAGAMENTO</div>
 
-                    <div class="checklist-item" data-selected="[ OK ]">
-                        <span class="checklist-label">2. Tela / Touch Screen</span>
-                        <div class="checklist-options">
-                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
-                        </div>
-                    </div>
-
-                    <div class="checklist-item" data-selected="[ OK ]">
-                        <span class="checklist-label">3. Conector de Carga</span>
-                        <div class="checklist-options">
-                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
-                        </div>
-                    </div>
-
-                    <div class="checklist-item" data-selected="[ OK ]">
-                        <span class="checklist-label">4. Câmeras (Frontal / Traseira)</span>
-                        <div class="checklist-options">
-                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
-                        </div>
-                    </div>
-
-                    <div class="checklist-item" data-selected="[ OK ]">
-                        <span class="checklist-label">5. Wi-Fi / Bluetooth / Redes</span>
-                        <div class="checklist-options">
-                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
-                        </div>
-                    </div>
-
-                    <div class="checklist-item" data-selected="[ OK ]">
-                        <span class="checklist-label">6. Áudio (Alto-falante / Auricular)</span>
-                        <div class="checklist-options">
-                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
-                        </div>
-                    </div>
-
-                    <div class="checklist-item" data-selected="[ OK ]">
-                        <span class="checklist-label">7. Botões Físicos</span>
-                        <div class="checklist-options">
-                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
-                        </div>
-                    </div>
-
-                    <div class="checklist-item" data-selected="[ OK ]">
-                        <span class="checklist-label">8. Biometria / Face ID</span>
-                        <div class="checklist-options">
-                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
-                        </div>
-                    </div>
-
+                <div class="os-field full">
+                    <label>VALOR TOTAL ESTIMADO</label>
+                    <input type="text" id="valorTotal" placeholder="0,00">
                 </div>
 
-                <div class="os-section-title">Valores & Prazos</div>
-
-                <div class="os-row">
-                    <div class="os-field">
-                        <label>VALOR ESTIMADO / ORÇAMENTO (R$)</label>
-                        <input type="text" id="valorOrcamento" placeholder="0,00">
-                    </div>
-                    <div class="os-field">
-                        <label>PRAZO ESTIMADO</label>
-                        <input type="text" id="prazoEstimado" placeholder="Ex: 2 dias úteis">
-                    </div>
+                <div class="os-field full">
+                    <label>SINAL / VALOR PAGO</label>
+                    <input type="text" id="valorSinal" placeholder="0,00">
                 </div>
+
+                <div class="os-field full">
+                    <label>RESTANTE A PAGAR NA RETIRADA</label>
+                    <input type="text" id="valorRestante" placeholder="0,00">
+                </div>
+
+                <!-- TERMOS DE GARANTIA -->
+                <div class="os-section-title">6. TERMOS DE GARANTIA E CONDIÇÕES</div>
 
                 <div class="os-terms">
-                    <strong>TERMOS DE SERVIÇO:</strong>
-                    1. A garantia cobre apenas o serviço executado e peças substituídas pelo prazo legal de 90 dias.<br>
-                    2. Aparelhos não retirados em até 90 dias após a conclusão estarão sujeitos a venda para custeio de despesas.<br>
-                    3. A loja não se responsabiliza por perda de dados. Faça backup antes da entrega.
+                    1. A garantia cobre exclusivamente a peça trocada ou o serviço prestado pelo prazo legal de 90 (noventa) dias a contar da retirada.<br>
+                    2. A garantia perde a validade em caso de queda, pressão na tela, contato com líquidos ou violação do selo interno de garantia.<br>
+                    3. É de inteira responsabilidade do cliente o backup prévio dos seus dados, eximindo a loja de perda de informações.<br>
+                    4. Aparelhos não retirados no prazo de até 90 (noventa) dias poderão ser destinados para custeio de peças e mão de obra, conforme a legislação vigente.<br>
+                    5. O cliente autoriza a execução dos testes necessários em bancada e a abertura do dispositivo para diagnóstico e reparo.
                 </div>
 
                 <div class="os-signature-area">
