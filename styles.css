@@ -1,37 +1,31 @@
-:root {
-    --primary-color: #E66721;
-    --bg-dark: #121212;
-    --card-dark: #1e1e1e;
-    --text-dark: #e0e0e0;
-    --border-dark: #333333;
-}
-
+/* Estilos Gerais da Aplicação */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-dark);
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    display: flex;
-    justify-content: center;
 }
 
 .main-wrapper {
-    width: 100%;
-    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card {
-    background-color: var(--card-dark);
-    border: 1px solid var(--border-dark);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 .logo-container {
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .header {
@@ -40,69 +34,66 @@ body {
 }
 
 .header h1 {
-    color: #ffffff;
-    margin: 0 0 4px 0;
+    margin: 0;
+    color: #E66721;
     font-size: 24px;
-    letter-spacing: 1px;
 }
 
 .section-title {
-    color: var(--primary-color);
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 14px;
+    color: #aaaaaa;
 }
 
 .os-header-box {
-    background-color: #252525;
-    border: 1px solid var(--border-dark);
-    border-radius: 8px;
-    padding: 12px;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 10px;
     margin-bottom: 20px;
     text-align: center;
 }
 
 .os-store-name {
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 6px;
+    font-weight: bold;
+    color: #E66721;
+    margin-bottom: 5px;
     font-size: 14px;
 }
 
 .os-store-info {
+    font-size: 12px;
+    color: #ccc;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    font-size: 12px;
-    color: #b0b0b0;
+    gap: 3px;
 }
 
 .os-whatsapp-link {
-    color: var(--primary-color);
+    color: #25D366;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 .os-container {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 15px;
 }
 
 .os-section-title {
-    color: var(--primary-color);
-    font-size: 12px;
-    font-weight: 700;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #E66721;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
     margin-top: 10px;
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .os-field {
-    flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 .os-field.full {
@@ -110,125 +101,101 @@ body {
 }
 
 .os-field label {
-    font-size: 10px;
-    font-weight: 700;
-    color: #aaaaaa;
-    margin-bottom: 4px;
-    letter-spacing: 0.5px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ddd;
 }
 
-.os-field input, 
-.os-field textarea {
+.os-field input, .os-field textarea {
     background-color: #2a2a2a;
-    border: 1px solid var(--border-dark);
-    border-radius: 6px;
-    color: #ffffff;
-    padding: 8px 10px;
-    font-size: 13px;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-.os-field input:focus, 
-.os-field textarea:focus {
-    border-color: var(--primary-color);
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #fff;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .os-field textarea {
     resize: vertical;
-    min-height: 50px;
+    min-height: 60px;
 }
 
-/* Input com porcentagem */
-.bateria-input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.bateria-input-wrapper input {
-    width: 100%;
-    padding-right: 35px !important;
-}
-
-.bateria-suffix {
-    position: absolute;
-    right: 12px;
-    color: #888888;
-    font-size: 13px;
-    font-weight: 600;
-    pointer-events: none;
-}
-
-/* Checklist */
 .checklist-table {
-    background-color: #252525;
-    border: 1px solid var(--border-dark);
-    border-radius: 8px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .checklist-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border-dark);
-}
-
-.checklist-item:last-child {
-    border-bottom: none;
+    background-color: #2a2a2a;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
 }
 
 .checklist-label {
     font-size: 12px;
-    color: #e0e0e0;
+    color: #fff;
 }
 
 .checklist-options {
     display: flex;
-    gap: 6px;
+    gap: 5px;
 }
 
 .chk-btn {
-    background-color: #333333;
-    border: 1px solid #444444;
-    color: #aaaaaa;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 600;
+    background-color: #333;
+    color: #aaa;
+    border: 1px solid #555;
+    padding: 5px 10px;
+    border-radius: 3px;
     cursor: pointer;
-    transition: all 0.2s;
+    font-size: 11px;
+    font-weight: bold;
 }
 
 .chk-btn.active-ok {
-    background-color: #2e7d32 !important;
-    color: #ffffff !important;
-    border-color: #2e7d32 !important;
+    background-color: #25D366;
+    color: #fff;
+    border-color: #1ebd5a;
 }
 
 .chk-btn.active-defeito {
-    background-color: #c62828 !important;
-    color: #ffffff !important;
-    border-color: #c62828 !important;
+    background-color: #d9534f;
+    color: #fff;
+    border-color: #c9302c;
 }
 
 .chk-btn.active-nt {
-    background-color: #E66721 !important;
-    color: #ffffff !important;
-    border-color: #E66721 !important;
+    background-color: #f0ad4e;
+    color: #fff;
+    border-color: #eea236;
+}
+
+.bateria-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bateria-suffix {
+    font-weight: bold;
+    color: #E66721;
+    font-size: 14px;
 }
 
 .os-terms {
-    background-color: #252525;
-    border: 1px solid var(--border-dark);
-    border-radius: 6px;
-    padding: 10px;
     font-size: 10px;
-    color: #aaaaaa;
+    color: #aaa;
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
     line-height: 1.4;
 }
 
@@ -239,88 +206,157 @@ body {
 
 .signature-line {
     width: 60%;
-    margin: 0 auto 6px auto;
-    border-top: 1px solid #777777;
+    margin: 0 auto 5px auto;
+    border-top: 1px solid #777;
 }
 
 .os-signature-area span {
     font-size: 11px;
-    color: #aaaaaa;
+    color: #aaa;
 }
 
-.button-group {
-    display: flex;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.button-group button, .preview-buttons button {
-    width: 100%;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-
-.button-group button:hover, .preview-buttons button:hover {
-    opacity: 0.9;
-}
-
-/* Área de pré-visualização e botões */
-.preview-container {
-    margin-top: 10px;
-}
-
-.preview-box {
-    background-color: #1a1a1a;
-    border: 1px solid var(--border-dark);
-    padding: 12px;
-    border-radius: 6px;
-    font-family: monospace;
-    font-size: 12px;
-    white-space: pre-wrap;
-    color: #e0e0e0;
-    margin: 10px 0 15px 0;
-    max-height: 350px;
-    overflow-y: auto;
-}
-
-.preview-buttons {
+.button-group, .preview-buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 20px;
 }
 
-.pdf-btn {
-    background-color: var(--primary-color) !important;
+button {
+    background-color: #E66721;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
 }
 
-.whatsapp-btn {
-    background-color: #25D366 !important;
+button:hover {
+    opacity: 0.9;
 }
 
-.copy-btn {
-    background-color: #007bff !important;
+.preview-box {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 12px;
+    font-family: monospace;
+    font-size: 12px;
+    white-space: pre-wrap;
+    color: #ddd;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
-.edit-btn {
-    background-color: #6c757d !important;
+.pdf-btn { background-color: #0275d8; }
+.whatsapp-btn { background-color: #25D366; }
+.copy-btn { background-color: #f0ad4e; color: #000; }
+.edit-btn { background-color: #636c72; }
+.new-btn { background-color: #E66721; }
+
+/* Estilos da Folha PDF / Impressão */
+.pdf-print-sheet {
+    display: none;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
+    font-size: 11px;
+    font-family: Arial, sans-serif;
+    line-height: 1.3;
 }
 
-.new-btn {
-    background-color: #6f42c1 !important;
+.pdf-sheet-header {
+    text-align: center;
+    border-bottom: 2px solid #E66721;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
 }
 
-/* Impressão Limpa */
+.pdf-sheet-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #E66721;
+}
+
+.pdf-sheet-header p {
+    margin: 2px 0;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.pdf-sheet-header span {
+    font-size: 9px;
+    color: #555555;
+}
+
+.pdf-section-block {
+    margin-bottom: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 6px 8px;
+    background-color: #fafafa;
+}
+
+.pdf-block-title {
+    font-weight: bold;
+    color: #E66721;
+    font-size: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 4px;
+    padding-bottom: 2px;
+    text-transform: uppercase;
+}
+
+.pdf-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+
+.pdf-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+}
+
+.pdf-checklist-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px 10px;
+    font-size: 10px;
+}
+
+.pdf-terms-text {
+    font-size: 8px;
+    color: #333333;
+    line-height: 1.2;
+}
+
+.pdf-signature-section {
+    margin-top: 25px;
+    text-align: center;
+    page-break-inside: avoid;
+}
+
+.pdf-sig-line {
+    width: 50%;
+    margin: 0 auto 4px auto;
+    border-top: 1px solid #000000;
+}
+
+.pdf-sig-label {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Regra estrita para o modo Impressão / PDF */
 @media print {
     @page {
         size: A4 portrait;
-        margin: 10mm;
+        margin: 8mm;
     }
 
     body {
@@ -336,48 +372,18 @@ body {
         padding: 0 !important;
     }
 
-    .os-header-box, .checklist-table, .os-terms, .preview-box {
-        background-color: #f9f9f9 !important;
-        border-color: #cccccc !important;
-        color: #000000 !important;
-    }
-
-    .header h1, .os-store-name, .checklist-label, .os-field input, .os-field textarea {
-        color: #000000 !important;
-    }
-
-    .os-field input, .os-field textarea {
-        background-color: #ffffff !important;
-        border-color: #cccccc !important;
-    }
-
-    .chk-btn {
-        background-color: #e0e0e0 !important;
-        color: #333333 !important;
-        border-color: #cccccc !important;
-    }
-
-    .chk-btn.active-ok {
-        background-color: #2e7d32 !important;
-        color: #ffffff !important;
-    }
-
-    .chk-btn.active-defeito {
-        background-color: #c62828 !important;
-        color: #ffffff !important;
-    }
-
-    .chk-btn.active-nt {
-        background-color: #E66721 !important;
-        color: #ffffff !important;
-    }
-
     #osForm, 
-    .preview-buttons {
+    .preview-buttons,
+    .os-section-title:has(+ #previewBox),
+    #previewBox {
         display: none !important;
     }
 
     .preview-container {
+        display: block !important;
+    }
+
+    .pdf-print-sheet {
         display: block !important;
     }
 }
