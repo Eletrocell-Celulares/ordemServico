@@ -49,6 +49,7 @@ body {
     font-weight: 700;
     color: #ffffff;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .section-title {
@@ -152,10 +153,12 @@ body {
     transition: border-color 0.2s;
 }
 
+/* PADRONIZAÇÃO EXATA DOS INPUTS DE DATA PARA BATER COM OS TEXTOS */
 .os-field input[type="date"] {
-    font-size: 12px;
-    padding: 10px 8px;
-    text-align: center;
+    font-size: 13px;
+    padding: 10px 12px;
+    font-family: inherit;
+    color: #ffffff;
 }
 
 .os-field input:focus, 
@@ -377,4 +380,3 @@ button.secondary {
         flex: 1;
     }
 }
-
