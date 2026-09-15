@@ -139,7 +139,28 @@ body {
     min-height: 50px;
 }
 
-/* Checklist Original */
+/* Input com porcentagem */
+.bateria-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.bateria-input-wrapper input {
+    width: 100%;
+    padding-right: 35px !important;
+}
+
+.bateria-suffix {
+    position: absolute;
+    right: 12px;
+    color: #888888;
+    font-size: 13px;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+/* Checklist */
 .checklist-table {
     background-color: #252525;
     border: 1px solid var(--border-dark);
@@ -149,28 +170,11 @@ body {
     flex-direction: column;
 }
 
-.checklist-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    background-color: #2d2d2d;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--primary-color);
-    border-bottom: 1px solid var(--border-dark);
-}
-
-.chk-headers {
-    display: flex;
-    gap: 20px;
-}
-
 .checklist-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
+    padding: 10px 12px;
     border-bottom: 1px solid var(--border-dark);
 }
 
@@ -201,9 +205,21 @@ body {
 }
 
 .chk-btn.active-ok {
-    background-color: var(--primary-color);
-    color: #ffffff;
-    border-color: var(--primary-color);
+    background-color: #2e7d32 !important;
+    color: #ffffff !important;
+    border-color: #2e7d32 !important;
+}
+
+.chk-btn.active-defeito {
+    background-color: #c62828 !important;
+    color: #ffffff !important;
+    border-color: #c62828 !important;
+}
+
+.chk-btn.active-nt {
+    background-color: #E66721 !important;
+    color: #ffffff !important;
+    border-color: #E66721 !important;
 }
 
 .os-terms {
@@ -238,8 +254,8 @@ body {
     margin-top: 20px;
 }
 
-.button-group button {
-    flex: 1;
+.button-group button, .preview-buttons button {
+    width: 100%;
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -251,20 +267,13 @@ body {
     transition: opacity 0.2s;
 }
 
-.button-group button:hover {
+.button-group button:hover, .preview-buttons button:hover {
     opacity: 0.9;
 }
 
-.whatsapp-btn {
-    background-color: #25D366 !important;
-}
-
+/* Área de pré-visualização e botões */
 .preview-container {
-    margin-top: 20px;
-    background-color: #252525;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid var(--border-dark);
+    margin-top: 10px;
 }
 
 .preview-box {
@@ -276,7 +285,35 @@ body {
     font-size: 12px;
     white-space: pre-wrap;
     color: #e0e0e0;
-    margin: 10px 0;
+    margin: 10px 0 15px 0;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.preview-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pdf-btn {
+    background-color: var(--primary-color) !important;
+}
+
+.whatsapp-btn {
+    background-color: #25D366 !important;
+}
+
+.copy-btn {
+    background-color: #007bff !important;
+}
+
+.edit-btn {
+    background-color: #6c757d !important;
+}
+
+.new-btn {
+    background-color: #6f42c1 !important;
 }
 
 /* Impressão Limpa */
@@ -299,12 +336,13 @@ body {
         padding: 0 !important;
     }
 
-    .os-header-box, .checklist-table, .os-terms, .preview-container {
+    .os-header-box, .checklist-table, .os-terms, .preview-box {
         background-color: #f9f9f9 !important;
         border-color: #cccccc !important;
+        color: #000000 !important;
     }
 
-    .header h1, .os-store-name, .checklist-label, .os-field input, .os-field textarea, .preview-box {
+    .header h1, .os-store-name, .checklist-label, .os-field input, .os-field textarea {
         color: #000000 !important;
     }
 
@@ -320,13 +358,26 @@ body {
     }
 
     .chk-btn.active-ok {
-        background-color: var(--primary-color) !important;
+        background-color: #2e7d32 !important;
         color: #ffffff !important;
     }
 
-    #btnContainerPrincipal, 
-    #previewContainer .whatsapp-btn,
-    .os-bottom-action {
+    .chk-btn.active-defeito {
+        background-color: #c62828 !important;
+        color: #ffffff !important;
+    }
+
+    .chk-btn.active-nt {
+        background-color: #E66721 !important;
+        color: #ffffff !important;
+    }
+
+    #osForm, 
+    .preview-buttons {
         display: none !important;
+    }
+
+    .preview-container {
+        display: block !important;
     }
 }
