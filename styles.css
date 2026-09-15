@@ -103,10 +103,6 @@ body {
     transition: opacity 0.2s;
 }
 
-.os-whatsapp-link:hover {
-    opacity: 0.8;
-}
-
 .os-whatsapp-link strong {
     color: #ffffff;
     font-weight: 600;
@@ -140,25 +136,42 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* FIXA ALTURA E APARÊNCIA UNIFORME DOS CAMPOS DE TEXTO E DATA NO IOS */
 .os-field input, 
 .os-field textarea {
     width: 100%;
+    height: 42px;
     background: #1a1a1a;
     border: 1px solid #333333;
     border-radius: 6px;
-    padding: 10px 12px;
+    padding: 0 12px;
     color: #ffffff;
     font-size: 13px;
     outline: none;
     transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-/* PADRONIZAÇÃO EXATA DOS INPUTS DE DATA PARA BATER COM OS TEXTOS */
 .os-field input[type="date"] {
+    height: 42px;
+    line-height: 42px;
     font-size: 13px;
-    padding: 10px 12px;
     font-family: inherit;
     color: #ffffff;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    -webkit-appearance: none;
+}
+
+.os-field input[type="date"]::-webkit-date-and-time-value {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .os-field input:focus, 
@@ -167,6 +180,8 @@ body {
 }
 
 .os-field textarea {
+    height: auto;
+    padding: 10px 12px;
     resize: vertical;
     min-height: 70px;
 }
@@ -181,7 +196,6 @@ body {
     padding-bottom: 4px;
 }
 
-/* ESTILO DA TABELA DE CHECKLIST COM 3 OPÇÕES (OK / DEFEITO / N/T) */
 .checklist-table {
     display: flex;
     flex-direction: column;
@@ -291,18 +305,7 @@ body {
     font-weight: 600;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
     width: 100%;
-}
-
-.btn-nova-os:hover {
-    background: rgba(204, 74, 0, 0.15);
-    color: #ffffff;
-    border-color: #FF9A55;
 }
 
 button {
@@ -314,12 +317,7 @@ button {
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.2s;
     width: 100%;
-}
-
-button:hover {
-    opacity: 0.9;
 }
 
 button.secondary {
@@ -378,5 +376,101 @@ button.secondary {
     }
     .button-group button {
         flex: 1;
+    }
+}
+
+/* =========================================================
+   CONFIGURAÇÃO EXCLUSIVA PARA IMPRESSÃO / GERAR PDF (A4 - 1 PÁGINA)
+   ========================================================= */
+@media print {
+    @page {
+        margin: 10mm;
+        size: A4 portrait;
+    }
+
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+    }
+
+    .main-wrapper {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .card {
+        background-color: #ffffff !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    button, 
+    .btn-nova-os, 
+    .preview-container, 
+    #btnContainerPrincipal, 
+    .os-bottom-action {
+        display: none !important;
+    }
+
+    .os-container {
+        background: #ffffff !important;
+        border: 1px solid #cccccc !important;
+        color: #000000 !important;
+    }
+
+    .os-header-box {
+        background: #f8f8f8 !important;
+        border: 1px solid #dddddd !important;
+    }
+
+    .os-store-name, .header h1 {
+        color: #000000 !important;
+    }
+
+    .os-store-info span, .os-field label {
+        color: #333333 !important;
+    }
+
+    .os-whatsapp-link, .os-section-title, .section-title {
+        color: #d35400 !important;
+    }
+
+    .os-field input, 
+    .os-field textarea {
+        background: #f9f9f9 !important;
+        border: 1px solid #cccccc !important;
+        color: #000000 !important;
+    }
+
+    .checklist-table {
+        background: #ffffff !important;
+        border: 1px solid #cccccc !important;
+    }
+
+    .checklist-header-row {
+        background: #eeeeee !important;
+        color: #d35400 !important;
+        border-bottom: 1px solid #cccccc !important;
+    }
+
+    .checklist-item-row {
+        border-bottom: 1px solid #eeeeee !important;
+        color: #000000 !important;
+    }
+
+    .os-terms {
+        background: #f8f8f8 !important;
+        border: 1px solid #dddddd !important;
+        color: #444444 !important;
+    }
+
+    .signature-line {
+        background: #000000 !important;
+    }
+
+    .os-signature-area span {
+        color: #000000 !important;
     }
 }
