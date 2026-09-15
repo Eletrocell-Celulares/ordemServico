@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELETROCELL ⚡️ | Ordem de Serviço</title>
+    <!-- Configuração PWA para transformar em App -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0d0d0d">
+    <!-- Arquivo CSS Externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="main-wrapper">
+        
+        <!-- CARD DA ORDEM DE SERVIÇO -->
+        <section class="card">
+            <div class="logo-container">
+                <svg width="50" height="75" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="copper3D" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FF9A55" />
+                            <stop offset="40%" stop-color="#CC4A00" />
+                            <stop offset="100%" stop-color="#551D00" />
+                        </linearGradient>
+                    </defs>
+                    <g>
+                        <rect x="10" y="10" width="80" height="130" rx="12" fill="none" stroke="url(#copper3D)" stroke-width="8"/>
+                        <circle cx="50" cy="122" r="5" fill="url(#copper3D)"/>
+                        <circle cx="50" cy="95" r="6" fill="url(#copper3D)"/>
+                        <path d="M 36 78 A 18 18 0 0 1 64 78" fill="none" stroke="url(#copper3D)" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M 23 60 A 38 38 0 0 1 77 60" fill="none" stroke="url(#copper3D)" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M 14 42 A 52 52 0 0 1 86 42" fill="none" stroke="url(#copper3D)" stroke-width="8" stroke-linecap="round"/>
+                    </g>
+                </svg>
+            </div>
+
+            <header class="header">
+                <h1>Eletrocell ⚡️</h1>
+            </header>
+
+            <h2 class="section-title">| Ordem de Serviço (O.S.) |</h2>
+
+            <!-- FORMULÁRIO / DOCUMENTO DE O.S. -->
+            <div class="os-container" id="osDocumento">
+                <div class="os-header-box">
+                    <div class="os-store-name">ELETROCELL ⚡️ — ASSISTÊNCIA DE CELULARES</div>
+                    <div class="os-store-info">
+                        <span>📍 Av. Getúlio Vargas, n°40, Conceição do Jacuípe - BA</span>
+                        <a href="https://wa.me/5575981718671" target="_blank" class="os-whatsapp-link">
+                            💬 WhatsApp: <strong>(75) 98171-8671</strong>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="os-row">
+                    <div class="os-field">
+                        <label>OS Nº:</label>
+                        <input type="text" id="val-os" placeholder="Ex: 001">
+                    </div>
+                    <div class="os-field">
+                        <label>Data de Entrada:</label>
+                        <input type="date" id="dataEntrada">
+                    </div>
+                </div>
+
+                <div class="os-row">
+                    <div class="os-field">
+                        <label>Atendente:</label>
+                        <input type="text" id="val-atendente" placeholder="Nome do atendente">
+                    </div>
+                    <div class="os-field">
+                        <label>Previsão de Término:</label>
+                        <input type="date" id="dataPrevisao">
+                    </div>
+                </div>
+
+                <div class="os-section-title">1. DADOS DO CLIENTE</div>
+                <div class="os-field full">
+                    <label>Nome Completo:</label>
+                    <input type="text" id="val-cliente" placeholder="Nome do cliente">
+                </div>
+                <div class="os-row">
+                    <div class="os-field">
+                        <label>Telefone / WhatsApp:</label>
+                        <input type="text" id="val-telefone" placeholder="(75) 9XXXX-XXXX">
+                    </div>
+                    <div class="os-field">
+                        <label>CPF:</label>
+                        <input type="text" id="val-cpf" placeholder="000.000.000-00">
+                    </div>
+                </div>
+
+                <div class="os-section-title">2. DADOS DO APARELHO E ACESSOS</div>
+                <div class="os-row">
+                    <div class="os-field">
+                        <label>Modelo do iPhone:</label>
+                        <input type="text" id="val-modelo" placeholder="Ex: iPhone 11">
+                    </div>
+                    <div class="os-field">
+                        <label>Cor:</label>
+                        <input type="text" id="val-cor" placeholder="Ex: Preto">
+                    </div>
+                </div>
+                <div class="os-row">
+                    <div class="os-field">
+                        <label>IMEI / Nº de Série:</label>
+                        <input type="text" id="val-imei" placeholder="Número de série ou IMEI">
+                    </div>
+                    <div class="os-field">
+                        <label>Senha de Desbloqueio:</label>
+                        <input type="text" id="val-senha" placeholder="Senha numérica ou padrão">
+                    </div>
+                </div>
+                <div class="os-field full">
+                    <label>Conta iCloud / Apple ID (E-mail e Senha - Se necessário para testes):</label>
+                    <input type="text" id="val-icloud" placeholder="Deixar em branco se preferir não informar">
+                </div>
+
+                <div class="os-section-title">3. CHECKLIST DE ENTRADA (Testado no Balcão)</div>
+                <div class="checklist-table" id="checklistContainer">
+                    <div class="checklist-header-row">
+                        <span>Item / Função</span>
+                        <span>OK</span>
+                        <span>Defeito</span>
+                        <span>N/T</span>
+                    </div>
+                    <!-- Preenchido via script.js -->
+                </div>
+
+                <div class="os-row" style="margin-top: 15px;">
+                    <div class="os-field battery-field">
+                        <label>Saúde da Bateria (%):</label>
+                        <input type="text" id="val-bateria" placeholder="Ex: 85%">
+                    </div>
+                    <div class="os-field">
+                        <label>Acessórios Deixados:</label>
+                        <input type="text" id="val-acessorios" placeholder="Ex: Apenas aparelho / Capinha / Carregador">
+                    </div>
+                </div>
+
+                <div class="os-field full">
+                    <label>Observações de Avarias Visíveis (trincados, riscos, amassados na carcaça, marcas de abertura prévia):</label>
+                    <textarea id="val-avarias" placeholder="Descreva os detalhes estéticos do aparelho..."></textarea>
+                </div>
+
+                <div class="os-section-title">4. DEFEITO RELATADO / SERVIÇO SOLICITADO</div>
+                <div class="os-field full">
+                    <label>Relato do Problema:</label>
+                    <textarea id="val-defeito" placeholder="Descreva o problema informado pelo cliente..."></textarea>
+                </div>
+
+                <div class="os-section-title">5. VALORES E CONDIÇÃO DE PAGAMENTO</div>
+                <div class="os-row">
+                    <div class="os-field">
+                        <label>Valor Total Estimado:</label>
+                        <input type="text" id="val-total" placeholder="R$ 0,00">
+                    </div>
+                    <div class="os-field">
+                        <label>Sinal / Valor Pago:</label>
+                        <input type="text" id="val-sinal" placeholder="R$ 0,00">
+                    </div>
+                </div>
+                <div class="os-field full">
+                    <label>Restante a Pagar na Retirada:</label>
+                    <input type="text" id="val-restante" placeholder="R$ 0,00">
+                </div>
+
+                <div class="os-section-title">6. TERMOS DE GARANTIA E CONDIÇÕES</div>
+                <div class="os-terms">
+                    1. A garantia cobre exclusivamente a peça trocada ou o serviço prestado pelo prazo legal de 90 (noventa) dias a contar da retirada.<br>
+                    2. A garantia perde a validade em caso de queda, pressão na tela, contato com líquidos ou violação do selo interno de garantia.<br>
+                    3. É de inteira responsabilidade do cliente o backup prévio dos seus dados, eximindo a loja de perda de informações.<br>
+                    4. Aparelhos não retirados no prazo de até 90 (noventa) dias poderão ser destinados para custeio de peças e mão de obra, conforme a legislação vigente.<br>
+                    5. O cliente autoriza a execução dos testes necessários em bancada e a abertura do dispositivo para diagnóstico e reparo.
+                </div>
+
+                <div class="os-signature-area">
+                    <div class="signature-line"></div>
+                    <span>Assinatura do Cliente</span>
+                </div>
+
+                <div class="os-bottom-action">
+                    <button type="button" id="btnLimparOs" class="btn-nova-os">✨ Nova O.S.</button>
+                </div>
+            </div>
+
+            <!-- CONTAINER DE PRÉ-VISUALIZAÇÃO -->
+            <div class="preview-container" id="previewContainer" style="display: none;">
+                <div class="preview-header">
+                    <h3>📄 PRÉ-VISUALIZAÇÃO DA O.S.</h3>
+                    <p>Confira os dados abaixo. Você pode voltar para editar, enviar no WhatsApp, copiar ou gerar o PDF/Imprimir.</p>
+                </div>
+                
+                <div class="preview-box" id="previewContent"></div>
+
+                <div class="preview-actions">
+                    <div class="button-group">
+                        <button class="secondary" id="btnVoltarEditar">Voltar e Editar</button>
+                        <button class="whatsapp-btn" id="btnEnviarWhatsapp">Enviar no WhatsApp</button>
+                    </div>
+                    <div class="button-group" style="margin-top: 10px;">
+                        <button class="secondary" id="btnCopiarPreview">Copiar Mensagem</button>
+                        <button id="btnGerarPdf">Gerar PDF / Imprimir</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group" id="btnContainerPrincipal">
+                <button id="btnGerarPreview">Gerar Pré-visualização</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
