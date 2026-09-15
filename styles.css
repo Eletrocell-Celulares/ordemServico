@@ -100,7 +100,6 @@ body {
     color: #FF9A55;
     text-decoration: none;
     font-weight: 500;
-    transition: opacity 0.2s;
 }
 
 .os-whatsapp-link strong {
@@ -162,15 +161,6 @@ body {
     display: flex;
     align-items: center;
     -webkit-appearance: none;
-}
-
-.os-field input[type="date"]::-webkit-date-and-time-value {
-    text-align: left;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
 }
 
 .os-field input:focus, 
@@ -249,14 +239,6 @@ body {
     accent-color: #CC4A00;
     margin: 0 auto;
     display: block;
-}
-
-.checklist-item-row input.check-defeito {
-    accent-color: #e74c3c;
-}
-
-.checklist-item-row input.check-nt {
-    accent-color: #f39c12;
 }
 
 .os-terms {
@@ -375,112 +357,5 @@ button.secondary {
     }
     .button-group button {
         flex: 1;
-    }
-}
-
-/* =========================================================
-   CONFIGURAÇÃO DE IMPRESSÃO (PDF LIMPO E CLARO)
-   ========================================================= */
-@media print {
-    @page {
-        margin: 8mm;
-        size: A4 portrait;
-    }
-
-    * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    html, body {
-        background-color: #ffffff !important;
-        background: #ffffff !important;
-        color: #000000 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    .main-wrapper, .card {
-        background-color: #ffffff !important;
-        background: #ffffff !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    /* ESCONDE ELEMENTOS QUE NÃO DEVEM IR PARA O PDF */
-    button, 
-    .btn-nova-os, 
-    .preview-container, 
-    #previewContainer,
-    #btnContainerPrincipal, 
-    .os-bottom-action {
-        display: none !important;
-    }
-
-    /* FORÇA A EXIBIÇÃO DO FORMULÁRIO COMPLETO DA O.S. */
-    #osDocumento, .os-container {
-        display: block !important;
-        background: #ffffff !important;
-        border: 1px solid #cccccc !important;
-        color: #000000 !important;
-        padding: 10px !important;
-    }
-
-    .os-header-box {
-        background: #f8f8f8 !important;
-        border: 1px solid #dddddd !important;
-    }
-
-    .os-store-name, .header h1 {
-        color: #000000 !important;
-    }
-
-    .os-store-info span, .os-field label {
-        color: #333333 !important;
-    }
-
-    .os-whatsapp-link, .os-section-title, .section-title {
-        color: #d35400 !important;
-    }
-
-    .os-field input, 
-    .os-field textarea {
-        background: #fdfdfd !important;
-        border: 1px solid #cccccc !important;
-        color: #000000 !important;
-    }
-
-    .checklist-table {
-        background: #ffffff !important;
-        border: 1px solid #cccccc !important;
-    }
-
-    .checklist-header-row {
-        background: #f0f0f0 !important;
-        color: #d35400 !important;
-        border-bottom: 1px solid #cccccc !important;
-    }
-
-    .checklist-item-row {
-        border-bottom: 1px solid #eeeeee !important;
-        color: #000000 !important;
-    }
-
-    .os-terms {
-        background: #f8f8f8 !important;
-        border: 1px solid #dddddd !important;
-        color: #444444 !important;
-    }
-
-    .signature-line {
-        background: #000000 !important;
-    }
-
-    .os-signature-area span {
-        color: #000000 !important;
     }
 }
