@@ -2,211 +2,191 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ELETROCELL ⚡️ | Ordem de Serviço</title>
-    
-    <!-- Configurações PWA (iPhone e Android) -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Eletrocell OS">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f3a1.png">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordem de Serviço - Módulo X</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <div class="main-wrapper">
         <div class="card">
             
-            <!-- LOGO OFICIAL (SMARTPHONE + SINAL DE ONDAS) -->
+            <!-- LOGO & CABEÇALHO DA LOJA -->
             <div class="logo-container">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="5" y="2" width="14" height="20" rx="3" stroke="#E66721" stroke-width="2" fill="none" />
-                    <path d="M7.5 7.5C8.8 6.2 10.3 5.5 12 5.5C13.7 5.5 15.2 6.2 16.5 7.5" stroke="#E66721" stroke-width="1.8" stroke-linecap="round" />
-                    <path d="M9.2 10.2C10 9.4 11 9 12 9C13 9 14 9.4 14.8 10.2" stroke="#E66721" stroke-width="1.8" stroke-linecap="round" />
-                    <path d="M10.8 13C11.1 12.7 11.5 12.5 12 12.5C12.5 12.5 12.9 12.7 13.2 13" stroke="#E66721" stroke-width="1.8" stroke-linecap="round" />
-                    <circle cx="12" cy="16.5" r="1" fill="#E66721" />
+                <!-- Se for usar tag <img> com imagem PNG/JPG, descomente a linha abaixo e insira o caminho da imagem: -->
+                <!-- <img src="sua-logo.png" alt="Logo Módulo X" class="app-logo"> -->
+
+                <!-- Logo SVG Padrão -->
+                <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" rx="20" fill="#E66721"/>
+                    <path d="M30 30L50 50L30 70M70 30L50 50L70 70" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
 
             <div class="header">
-                <h1>Eletrocell ⚡️</h1>
-                <p class="section-title">| Ordem de Serviço (O.S.) |</p>
+                <h1>MÓDULO X</h1>
+                <span class="section-title">ASSISTÊNCIA TÉCNICA</span>
             </div>
 
-            <!-- FORMULÁRIO COMPLETO DA OS -->
-            <div id="osDocumento">
+            <div class="os-header-box">
+                <div class="os-store-name">MÓDULO X - REPAROS E MANUTENÇÃO</div>
+                <div class="os-store-info">
+                    <span>Especializada em Smartphones, Tablets e Eletrônicos</span>
+                    <span>Contato / WhatsApp: <a href="#" class="os-whatsapp-link">(00) 00000-0000</a></span>
+                </div>
+            </div>
+
+            <!-- FORMULÁRIO DADOS DA OS -->
+            <form id="osForm" class="os-container" onsubmit="return false;">
                 
-                <div class="os-header-box">
-                    <div class="os-store-name">ELETROCELL ASSISTÊNCIA TÉCNICA</div>
-                    <div class="os-store-info">
-                        <span>Manutenção Especializada em Smartphones e Tablets</span>
-                        <span>Contato / WhatsApp: <a href="https://wa.me/5575991234567" target="_blank" class="os-whatsapp-link"><strong>(75) 99123-4567</strong></a></span>
-                    </div>
-                </div>
-
-                <div class="os-container">
-                    <div class="os-row">
-                        <div class="os-field">
-                            <label for="val-os">Nº DA O.S.</label>
-                            <input type="text" id="val-os" placeholder="Ex: 001">
-                        </div>
-                        <div class="os-field">
-                            <label for="dataEntrada">DATA DE ENTRADA</label>
-                            <input type="date" id="dataEntrada">
-                        </div>
-                    </div>
-
-                    <div class="os-row">
-                        <div class="os-field">
-                            <label for="val-atendente">ATENDENTE RESPONSÁVEL</label>
-                            <input type="text" id="val-atendente" placeholder="Nome do atendente">
-                        </div>
-                        <div class="os-field">
-                            <label for="dataPrevisao">PREVISÃO DE ENTREGA</label>
-                            <input type="text" id="dataPrevisao" placeholder="Ex: 16/09 às 17h">
-                        </div>
-                    </div>
-
-                    <div class="os-section-title">DADOS DO CLIENTE</div>
-
-                    <div class="os-field full">
-                        <label for="val-cliente">NOME COMPLETO</label>
-                        <input type="text" id="val-cliente" placeholder="Nome do cliente">
-                    </div>
-
-                    <div class="os-row">
-                        <div class="os-field">
-                            <label for="val-telefone">TELEFONE / WHATSAPP</label>
-                            <input type="tel" id="val-telefone" placeholder="(00) 00000-0000">
-                        </div>
-                        <div class="os-field">
-                            <label for="val-cpf">CPF</label>
-                            <input type="text" id="val-cpf" placeholder="000.000.000-00">
-                        </div>
-                    </div>
-
-                    <div class="os-section-title">DADOS DO APARELHO</div>
-
-                    <div class="os-row">
-                        <div class="os-field">
-                            <label for="val-modelo">MODELO DO APARELHO</label>
-                            <input type="text" id="val-modelo" placeholder="Ex: iPhone 13 / Moto G22">
-                        </div>
-                        <div class="os-field">
-                            <label for="val-cor">COR</label>
-                            <input type="text" id="val-cor" placeholder="Ex: Preto">
-                        </div>
-                    </div>
-
-                    <div class="os-row">
-                        <div class="os-field">
-                            <label for="val-imei">IMEI / Nº DE SÉRIE</label>
-                            <input type="text" id="val-imei" placeholder="Digite o IMEI (*#06#)">
-                        </div>
-                        <div class="os-field">
-                            <label for="val-senha">SENHA DE DESBLOQUEIO</label>
-                            <input type="text" id="val-senha" placeholder="PIN, Padrão ou 'Sem senha'">
-                        </div>
-                    </div>
-
-                    <div class="os-row">
-                        <div class="os-field">
-                            <label for="val-icloud">CONTA ICLOUD / GOOGLE</label>
-                            <input type="text" id="val-icloud" placeholder="Removida / Informada">
-                        </div>
-                        <div class="os-field">
-                            <label for="val-bateria">SAÚDE DA BATERIA (%)</label>
-                            <input type="text" id="val-bateria" placeholder="Ex: 85%">
-                        </div>
-                    </div>
-
-                    <div class="os-field full">
-                        <label for="val-acessorios">ACESSÓRIOS DEIXADOS</label>
-                        <input type="text" id="val-acessorios" placeholder="Ex: Apenas aparelho / Capa / Carregador">
-                    </div>
-
-                    <div class="os-field full">
-                        <label for="val-avarias">AVARIAS / ESTADO FÍSICO</label>
-                        <textarea id="val-avarias" placeholder="Ex: Marcas de uso na carcaça, tela trincada no canto superior esquerdo..."></textarea>
-                    </div>
-
-                    <div class="os-section-title">CHECKLIST DE ENTRADA</div>
-                    <div id="checklistContainer" class="checklist-table"></div>
-
-                    <div class="os-section-title">DEFEITO RELATADO / SERVIÇO A REALIZAR</div>
-                    <div class="os-field full">
-                        <textarea id="val-defeito" placeholder="Descreva o problema relatado pelo cliente e o serviço orçado..."></textarea>
-                    </div>
-
-                    <div class="os-section-title">VALORES E PAGAMENTO</div>
-                    <div class="os-row">
-                        <div class="os-field">
-                            <label for="val-total">VALOR TOTAL (R$)</label>
-                            <input type="text" id="val-total" placeholder="R$ 0,00">
-                        </div>
-                        <div class="os-field">
-                            <label for="val-sinal">SINAL PAGO (R$)</label>
-                            <input type="text" id="val-sinal" placeholder="R$ 0,00">
-                        </div>
-                        <div class="os-field">
-                            <label for="val-restante">RESTANTE A PAGAR (R$)</label>
-                            <input type="text" id="val-restante" placeholder="R$ 0,00">
-                        </div>
-                    </div>
-
-                    <div class="os-terms">
-                        <p><strong>TERMOS DE GARANTIA E CONDIÇÕES:</strong></p>
-                        <p>1. Aparelhos não retirados em até 90 dias após a conclusão do serviço poderão ser vendidos para custear despesas de peças e armazenamento.</p>
-                        <p>2. A garantia cobre exclusivamente as peças substituídas ou serviços efetuados pelo período de 90 dias.</p>
-                        <p>3. Não nos responsabilizamos por perda de dados. Faça backup antes da entrega.</p>
-                    </div>
-
-                    <div class="os-signature-area">
-                        <div class="signature-line"></div>
-                        <span>Assinatura do Cliente</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- APENAS O BOTÃO DE VER PRÉ-VISUALIZAÇÃO NA TELA PRINCIPAL -->
-            <div id="btnContainerPrincipal" class="button-group" style="margin-top: 15px;">
-                <button id="btnGerarPreview">Ver Pré-Visualização da O.S.</button>
-            </div>
-
-            <!-- ÁREA DE PREVIEW PARA WHATSAPP E PDF -->
-            <div id="previewContainer" class="preview-container" style="display: none;">
-                <div class="preview-header">
-                    <p class="section-title">PRÉ-VISUALIZAÇÃO DA ORDEM DE SERVIÇO</p>
-                    <p>Confira os dados antes de enviar ou imprimir:</p>
-                </div>
-                <div id="previewContent" class="preview-box"></div>
+                <div class="os-section-title">Dados do Cliente & Aparelho</div>
                 
-                <!-- BOTÕES DENTRO DA PRÉ-VISUALIZAÇÃO -->
-                <div class="button-group">
-                    <button id="btnEnviarWhatsapp" class="whatsapp-btn">Enviar no WhatsApp</button>
-                    <button id="btnGerarPdf">Gerar PDF Impresso</button>
-                    <button id="btnCopiarPreview" class="secondary">Copiar Texto</button>
-                    <button id="btnVoltarEditar" class="secondary">Voltar / Editar O.S.</button>
+                <div class="os-row">
+                    <div class="os-field">
+                        <label>NOME DO CLIENTE</label>
+                        <input type="text" id="clienteNome" placeholder="Ex: João Silva">
+                    </div>
+                    <div class="os-field">
+                        <label>CONTATO / WHATSAPP</label>
+                        <input type="text" id="clienteContato" placeholder="(00) 00000-0000">
+                    </div>
                 </div>
-            </div>
 
-            <div class="os-bottom-action">
-                <button id="btnLimparOs" class="btn-nova-os">Limpar Formulário / Nova O.S.</button>
-            </div>
+                <div class="os-row">
+                    <div class="os-field">
+                        <label>MODELO DO APARELHO</label>
+                        <input type="text" id="aparelhoModelo" placeholder="Ex: iPhone 13 / Moto G60">
+                    </div>
+                    <div class="os-field">
+                        <label>IMEI / Nº DE SÉRIE</label>
+                        <input type="text" id="aparelhoImei" placeholder="Opcional">
+                    </div>
+                </div>
 
+                <div class="os-field full">
+                    <label>DEFEITO RELATADO / RECLAMAÇÃO</label>
+                    <textarea id="defeitoRelatado" placeholder="Descreva o problema informado pelo cliente..."></textarea>
+                </div>
+
+                <!-- CHECKLIST DE ENTRADA -->
+                <div class="os-section-title">Checklist de Entrada</div>
+                
+                <div class="checklist-table">
+                    
+                    <div class="checklist-item" data-selected="[ OK ]">
+                        <span class="checklist-label">1. Aparelho Liga</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-selected="[ OK ]">
+                        <span class="checklist-label">2. Tela / Touch Screen</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-selected="[ OK ]">
+                        <span class="checklist-label">3. Conector de Carga</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-selected="[ OK ]">
+                        <span class="checklist-label">4. Câmeras (Frontal / Traseira)</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-selected="[ OK ]">
+                        <span class="checklist-label">5. Wi-Fi / Bluetooth / Redes</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-selected="[ OK ]">
+                        <span class="checklist-label">6. Áudio (Alto-falante / Auricular)</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-selected="[ OK ]">
+                        <span class="checklist-label">7. Botões Físicos</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item" data-selected="[ OK ]">
+                        <span class="checklist-label">8. Biometria / Face ID</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="os-section-title">Valores & Prazos</div>
+
+                <div class="os-row">
+                    <div class="os-field">
+                        <label>VALOR ESTIMADO / ORÇAMENTO (R$)</label>
+                        <input type="text" id="valorOrcamento" placeholder="0,00">
+                    </div>
+                    <div class="os-field">
+                        <label>PRAZO ESTIMADO</label>
+                        <input type="text" id="prazoEstimado" placeholder="Ex: 2 dias úteis">
+                    </div>
+                </div>
+
+                <div class="os-terms">
+                    <strong>TERMOS DE SERVIÇO:</strong>
+                    1. A garantia cobre apenas o serviço executado e peças substituídas pelo prazo legal de 90 dias.<br>
+                    2. Aparelhos não retirados em até 90 dias após a conclusão estarão sujeitos a venda para custeio de despesas.<br>
+                    3. A loja não se responsabiliza por perda de dados. Faça backup antes da entrega.
+                </div>
+
+                <div class="os-signature-area">
+                    <div class="signature-line"></div>
+                    <span>Assinatura do Cliente</span>
+                </div>
+
+                <!-- BOTÕES DE AÇÃO -->
+                <div class="button-group" id="btnContainerPrincipal">
+                    <button type="button" onclick="gerarPDF()">Imprimir / Salvar PDF</button>
+                    <button type="button" class="whatsapp-btn" onclick="gerarTextoWhatsApp()">Gerar Resumo para WhatsApp</button>
+                </div>
+
+                <div class="preview-container" id="previewContainer" style="display: none;">
+                    <div class="section-title">Resumo Formatado para WhatsApp:</div>
+                    <div class="preview-box" id="previewBox"></div>
+                    <button type="button" class="whatsapp-btn" onclick="enviarWhatsApp()">Enviar via WhatsApp</button>
+                </div>
+
+            </form>
         </div>
     </div>
 
-    <!-- REGISTRO DO SERVICE WORKER (PWA) -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js')
-                .then(() => console.log('PWA Registrado com Sucesso!'))
-                .catch(err => console.log('Erro no PWA:', err));
-        }
-    </script>
     <script src="script.js"></script>
 </body>
 </html>
