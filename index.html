@@ -27,10 +27,10 @@
             </div>
 
             <div class="os-header-box">
-                <div class="os-store-name">ELETROCELL ASSISTÊNCIA TÉCNICA</div>
+                <div class="os-store-name">ELETROCELL ⚡ — ASSISTÊNCIA DE CELULARES</div>
                 <div class="os-store-info">
-                    <span>Manutenção Especializada em Smartphones e Tablets</span>
-                    <span>Contato / WhatsApp: <a href="#" class="os-whatsapp-link">(75) 99123-4567</a></span>
+                    <span>📍 Av. Getúlio Vargas, nº40, Conceição do Jacuípe - BA</span>
+                    <span>💬 WhatsApp: <a href="https://wa.me/5575981718671" class="os-whatsapp-link">(75) 98171-8671</a></span>
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
 
                 <div class="os-field full">
                     <label>DATA DE ENTRADA</label>
-                    <input type="text" id="dataEntrada" placeholder="15 de set. de 2026">
+                    <input type="date" id="dataEntrada">
                 </div>
 
                 <div class="os-field full">
@@ -54,7 +54,7 @@
 
                 <div class="os-field full">
                     <label>PREVISÃO DE ENTREGA</label>
-                    <input type="text" id="previsaoTermino" placeholder="Ex: 16/09 às 17h">
+                    <input type="date" id="previsaoTermino">
                 </div>
 
                 <!-- DADOS DO CLIENTE -->
@@ -67,12 +67,12 @@
 
                 <div class="os-field full">
                     <label>TELEFONE / WHATSAPP</label>
-                    <input type="text" id="clienteContato" placeholder="(00) 00000-0000">
+                    <input type="tel" id="clienteContato" placeholder="(75) 99999-9999" maxlength="15">
                 </div>
 
                 <div class="os-field full">
                     <label>CPF</label>
-                    <input type="text" id="clienteCpf" placeholder="000.000.000-00">
+                    <input type="text" id="clienteCpf" placeholder="000.000.000-00" maxlength="14">
                 </div>
 
                 <!-- DADOS DO APARELHO -->
@@ -107,15 +107,6 @@
                 <div class="os-section-title">3. CHECKLIST DE ENTRADA (Testado no Balcão)</div>
                 
                 <div class="checklist-table">
-                    <div class="checklist-header-row">
-                        <span>ITEM / FUNÇÃO</span>
-                        <div class="chk-headers">
-                            <span>OK</span>
-                            <span>DEFEITO</span>
-                            <span>N/T</span>
-                        </div>
-                    </div>
-                    
                     <div class="checklist-item" data-item="Tela / Touchscreen" data-selected="OK">
                         <span class="checklist-label">Tela / Touchscreen</span>
                         <div class="checklist-options">
@@ -147,7 +138,6 @@
                         <span class="checklist-label">Câmera Frontal</span>
                         <div class="checklist-options">
                             <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
                             <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
                         </div>
                     </div>
@@ -192,7 +182,6 @@
                         <span class="checklist-label">Sinal de Chip / Rede</span>
                         <div class="checklist-options">
                             <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
-                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
                             <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
                         </div>
                     </div>
@@ -236,7 +225,10 @@
 
                 <div class="os-field full">
                     <label>SAÚDE DA BATERIA (%)</label>
-                    <input type="text" id="saudeBateria" placeholder="Ex: 90%">
+                    <div class="bateria-input-wrapper">
+                        <input type="number" id="saudeBateria" min="60" max="100" placeholder="Ex: 90">
+                        <span class="bateria-suffix">%</span>
+                    </div>
                 </div>
 
                 <div class="os-field full">
@@ -262,17 +254,17 @@
 
                 <div class="os-field full">
                     <label>VALOR TOTAL ESTIMADO</label>
-                    <input type="text" id="valorTotal" placeholder="0,00">
+                    <input type="text" id="valorTotal" class="money-input" placeholder="0,00">
                 </div>
 
                 <div class="os-field full">
                     <label>SINAL / VALOR PAGO</label>
-                    <input type="text" id="valorSinal" placeholder="0,00">
+                    <input type="text" id="valorSinal" class="money-input" placeholder="0,00">
                 </div>
 
                 <div class="os-field full">
                     <label>RESTANTE A PAGAR NA RETIRADA</label>
-                    <input type="text" id="valorRestante" placeholder="0,00">
+                    <input type="text" id="valorRestante" class="money-input" placeholder="0,00">
                 </div>
 
                 <!-- TERMOS DE GARANTIA -->
@@ -291,19 +283,27 @@
                     <span>Assinatura do Cliente</span>
                 </div>
 
-                <!-- BOTÕES DE AÇÃO -->
+                <!-- BOTÃO APENAS DE PRÉ-VISUALIZAÇÃO NA 1ª PÁGINA -->
                 <div class="button-group" id="btnContainerPrincipal">
-                    <button type="button" onclick="gerarPDF()">Imprimir / Salvar PDF</button>
-                    <button type="button" class="whatsapp-btn" onclick="gerarTextoWhatsApp()">Gerar Resumo para WhatsApp</button>
-                </div>
-
-                <div class="preview-container" id="previewContainer" style="display: none;">
-                    <div class="section-title">Resumo Formatado para WhatsApp:</div>
-                    <div class="preview-box" id="previewBox"></div>
-                    <button type="button" class="whatsapp-btn" onclick="enviarWhatsApp()">Enviar via WhatsApp</button>
+                    <button type="button" onclick="gerarTextoWhatsApp()">Gerar Pré-visualização</button>
                 </div>
 
             </form>
+
+            <!-- TELA DE PRÉ-VISUALIZAÇÃO (OCULTA INICIALMENTE) -->
+            <div class="preview-container" id="previewContainer" style="display: none;">
+                <div class="os-section-title">PRÉ-VISUALIZAÇÃO DA ORDEM DE SERVIÇO</div>
+                <div class="preview-box" id="previewBox"></div>
+                
+                <div class="preview-buttons">
+                    <button type="button" class="pdf-btn" onclick="gerarPDF()">Gerar PDF / Salvar</button>
+                    <button type="button" class="whatsapp-btn" onclick="enviarWhatsApp()">Enviar para WhatsApp</button>
+                    <button type="button" class="copy-btn" onclick="copiarMensagem()">Copiar Mensagem</button>
+                    <button type="button" class="edit-btn" onclick="voltarEditar()">Voltar e Editar</button>
+                    <button type="button" class="new-btn" onclick="novaOS()">✨ Nova O.S.</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
