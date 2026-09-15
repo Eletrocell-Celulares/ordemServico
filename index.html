@@ -62,7 +62,7 @@
                 
                 <div class="os-field full">
                     <label>NOME COMPLETO</label>
-                    <input type="text" id="clienteNome" placeholder="Ricardo Rocha">
+                    <input type="text" id="clienteNome" placeholder="Nome do cliente">
                 </div>
 
                 <div class="os-field full">
@@ -138,6 +138,7 @@
                         <span class="checklist-label">Câmera Frontal</span>
                         <div class="checklist-options">
                             <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
                             <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
                         </div>
                     </div>
@@ -182,6 +183,7 @@
                         <span class="checklist-label">Sinal de Chip / Rede</span>
                         <div class="checklist-options">
                             <button type="button" class="chk-btn active-ok" onclick="setChecklist(this, 'OK')">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklist(this, 'Defeito')">Defeito</button>
                             <button type="button" class="chk-btn" onclick="setChecklist(this, 'N/T')">N/T</button>
                         </div>
                     </div>
@@ -294,6 +296,85 @@
             <div class="preview-container" id="previewContainer" style="display: none;">
                 <div class="os-section-title">PRÉ-VISUALIZAÇÃO DA ORDEM DE SERVIÇO</div>
                 <div class="preview-box" id="previewBox"></div>
+
+                <!-- FOLHA ESTRUTURADA PARA IMPRESSÃO/PDF (CONTÉM TODAS AS INFORMAÇÕES NA ORDEM EXATA + ASSINATURA) -->
+                <div class="pdf-print-sheet" id="pdfPrintSheet">
+                    <div class="pdf-sheet-header">
+                        <h2>ELETROCELL ⚡</h2>
+                        <p>ORDEM DE SERVIÇO (O.S.)</p>
+                        <span>Av. Getúlio Vargas, nº40, Conceição do Jacuípe - BA | Tel: (75) 98171-8671</span>
+                    </div>
+
+                    <div class="pdf-section-block">
+                        <div class="pdf-block-title">Informações Gerais</div>
+                        <div class="pdf-grid-2">
+                            <div><strong>O.S. Nº:</strong> <span id="p-os"></span></div>
+                            <div><strong>Data:</strong> <span id="p-data"></span></div>
+                            <div><strong>Atendente:</strong> <span id="p-atendente"></span></div>
+                            <div><strong>Previsão:</strong> <span id="p-previsao"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="pdf-section-block">
+                        <div class="pdf-block-title">Dados do Cliente</div>
+                        <div><strong>Nome:</strong> <span id="p-cliente"></span></div>
+                        <div class="pdf-grid-2" style="margin-top: 3px;">
+                            <div><strong>Contato:</strong> <span id="p-contato"></span></div>
+                            <div><strong>CPF:</strong> <span id="p-cpf"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="pdf-section-block">
+                        <div class="pdf-block-title">Dados do Aparelho</div>
+                        <div class="pdf-grid-2">
+                            <div><strong>Modelo:</strong> <span id="p-modelo"></span></div>
+                            <div><strong>Cor:</strong> <span id="p-cor"></span></div>
+                        </div>
+                        <div style="margin-top: 3px;"><strong>IMEI/Série:</strong> <span id="p-imei"></span></div>
+                        <div class="pdf-grid-2" style="margin-top: 3px;">
+                            <div><strong>Senha:</strong> <span id="p-senha"></span></div>
+                            <div><strong>Bateria:</strong> <span id="p-bateria"></span>%</div>
+                        </div>
+                        <div style="margin-top: 3px;"><strong>iCloud:</strong> <span id="p-icloud"></span></div>
+                        <div style="margin-top: 3px;"><strong>Acessórios:</strong> <span id="p-acessorios"></span></div>
+                        <div style="margin-top: 3px;"><strong>Avarias:</strong> <span id="p-avarias"></span></div>
+                    </div>
+
+                    <div class="pdf-section-block">
+                        <div class="pdf-block-title">3. Checklist de Entrada (Testado no Balcão)</div>
+                        <div class="pdf-checklist-grid" id="p-checklist"></div>
+                    </div>
+
+                    <div class="pdf-section-block">
+                        <div class="pdf-block-title">4. Defeito Relatado / Serviço Solicitado</div>
+                        <div><span id="p-defeito"></span></div>
+                    </div>
+
+                    <div class="pdf-section-block">
+                        <div class="pdf-block-title">5. Valores e Condição de Pagamento</div>
+                        <div class="pdf-grid-3">
+                            <div><strong>Total:</strong> R$ <span id="p-total"></span></div>
+                            <div><strong>Sinal:</strong> R$ <span id="p-sinal"></span></div>
+                            <div><strong>Restante:</strong> R$ <span id="p-restante"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="pdf-section-block">
+                        <div class="pdf-block-title">6. Termos de Garantia e Condições</div>
+                        <div class="pdf-terms-text">
+                            1. A garantia cobre exclusivamente a peça trocada ou o serviço prestado pelo prazo legal de 90 (noventa) dias a contar da retirada.<br>
+                            2. A garantia perde a validade em caso de queda, pressão na tela, contato com líquidos ou violação do selo interno de garantia.<br>
+                            3. É de inteira responsabilidade do cliente o backup prévio dos seus dados, eximindo a loja de perda de informações.<br>
+                            4. Aparelhos não retirados no prazo de até 90 (noventa) dias poderão ser destinados para custeio de peças e mão de obra, conforme a legislação vigente.<br>
+                            5. O cliente autoriza a execução dos testes necessários em bancada e a abertura do dispositivo para diagnóstico e reparo.
+                        </div>
+                    </div>
+
+                    <div class="pdf-signature-section">
+                        <div class="pdf-sig-line"></div>
+                        <div class="pdf-sig-label">Assinatura do Cliente</div>
+                    </div>
+                </div>
                 
                 <div class="preview-buttons">
                     <button type="button" class="pdf-btn" onclick="gerarPDF()">Gerar PDF / Salvar</button>
