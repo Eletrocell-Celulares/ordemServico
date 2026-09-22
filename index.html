@@ -4,26 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eletrocell - Ordem de Serviço</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0d0d0d">
 </head>
 <body>
 
     <div class="main-wrapper">
         <div class="card">
-            
+
             <!-- Logo e Título da Aplicação -->
+            <div class="logo-container">
+                <img src="logo.svg" alt="Eletrocell" width="48" height="48">
+            </div>
             <div class="header">
-                <div class="logo-wrapper">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="5" y="2" width="14" height="20" rx="3" stroke="#E66721" stroke-width="2" fill="none" />
-                        <path d="M7.5 7.5C8.8 6.2 10.3 5.5 12 5.5C13.7 5.5 15.2 6.2 16.5 7.5" stroke="#E66721" stroke-width="1.8" stroke-linecap="round" />
-                        <path d="M9.2 10.2C10 9.4 11 9 12 9C13 9 14 9.4 14.8 10.2" stroke="#E66721" stroke-width="1.8" stroke-linecap="round" />
-                        <path d="M10.8 13C11.1 12.7 11.5 12.5 12 12.5C12.5 12.5 12.9 12.7 13.2 13" stroke="#E66721" stroke-width="1.8" stroke-linecap="round" />
-                        <circle cx="12" cy="16.5" r="1" fill="#E66721" />
-                    </svg>
-                </div>
                 <h1>ELETROCELL ⚡</h1>
                 <span class="section-title">| Ordem de Serviço (O.S.) |</span>
             </div>
@@ -39,81 +35,201 @@
 
             <!-- Formulário de Entrada -->
             <form id="osForm" class="os-container">
-                <div class="form-grid">
-                    <div class="os-field">
-                        <label for="osNum">Nº DA O.S.</label>
-                        <input type="text" id="osNum" placeholder="Ex: 001" required>
-                    </div>
+                <div class="os-field">
+                    <label for="osNum">Nº DA O.S.</label>
+                    <input type="text" id="osNum" placeholder="Ex: 001" required>
+                </div>
 
-                    <div class="os-field">
-                        <label for="osData">DATA DE ENTRADA</label>
-                        <input type="date" id="osData" required>
-                    </div>
+                <div class="os-field">
+                    <label for="osData">DATA DE ENTRADA</label>
+                    <input type="date" id="osData" required>
+                </div>
 
-                    <div class="os-field">
-                        <label for="osAtendente">ATENDENTE RESPONSÁVEL</label>
-                        <input type="text" id="osAtendente" placeholder="Nome do atendente" required>
-                    </div>
+                <div class="os-field">
+                    <label for="osAtendente">ATENDENTE RESPONSÁVEL</label>
+                    <input type="text" id="osAtendente" placeholder="Nome do atendente" required>
+                </div>
 
-                    <div class="os-field">
-                        <label for="osPrevisao">PREVISÃO DE ENTREGA</label>
-                        <input type="date" id="osPrevisao">
-                    </div>
+                <div class="os-field">
+                    <label for="osPrevisao">PREVISÃO DE ENTREGA</label>
+                    <input type="date" id="osPrevisao">
                 </div>
 
                 <div class="os-section-title">Dados do Cliente</div>
 
-                <div class="form-grid">
-                    <div class="os-field full">
-                        <label for="clienteNome">NOME COMPLETO</label>
-                        <input type="text" id="clienteNome" placeholder="Nome do cliente" required>
-                    </div>
+                <div class="os-field full">
+                    <label for="clienteNome">NOME COMPLETO</label>
+                    <input type="text" id="clienteNome" placeholder="Nome do cliente" required>
+                </div>
 
-                    <div class="os-field">
-                        <label for="clienteTel">TELEFONE / WHATSAPP</label>
-                        <input type="tel" id="clienteTel" placeholder="(75) 99999-9999" required>
-                    </div>
+                <div class="os-field">
+                    <label for="clienteTel">TELEFONE / WHATSAPP</label>
+                    <input type="tel" id="clienteTel" placeholder="(75) 99999-9999" required>
+                </div>
 
-                    <div class="os-field">
-                        <label for="clienteCpf">CPF</label>
-                        <input type="text" id="clienteCpf" placeholder="000.000.000-00">
-                    </div>
+                <div class="os-field">
+                    <label for="clienteCpf">CPF</label>
+                    <input type="text" id="clienteCpf" placeholder="000.000.000-00">
                 </div>
 
                 <div class="os-section-title">Dados do Aparelho</div>
 
-                <div class="form-grid">
-                    <div class="os-field">
-                        <label for="aparelhoModelo">MODELO</label>
-                        <input type="text" id="aparelhoModelo" placeholder="Ex: iPhone 15 Pro Max" required>
+                <div class="os-field">
+                    <label for="aparelhoModelo">MODELO</label>
+                    <input type="text" id="aparelhoModelo" placeholder="Ex: iPhone 15 Pro Max" required>
+                </div>
+
+                <div class="os-field">
+                    <label for="aparelhoCor">COR</label>
+                    <input type="text" id="aparelhoCor" placeholder="Ex: Cinza">
+                </div>
+
+                <div class="os-field">
+                    <label for="aparelhoImei">IMEI / SÉRIE</label>
+                    <input type="text" id="aparelhoImei" placeholder="Número do IMEI">
+                </div>
+
+                <div class="os-field">
+                    <label for="aparelhoSenha">SENHA DO APARELHO</label>
+                    <input type="text" id="aparelhoSenha" placeholder="Senha numéerica ou padrão">
+                </div>
+
+                <div class="os-field">
+                    <label for="aparelhoBateria">BATERIA (%)</label>
+                    <div class="bateria-input-wrapper">
+                        <input type="number" id="aparelhoBateria" min="0" max="100" placeholder="100">
+                        <span class="bateria-suffix">%</span>
+                    </div>
+                </div>
+
+                <div class="os-field full">
+                    <label for="aparelhoAvarias">AVARIAS / ESTADO FÍSICO</label>
+                    <textarea id="aparelhoAvarias" placeholder="Riscos, trincados, marcas de queda..."></textarea>
+                </div>
+
+                <div class="os-section-title">Checklist de Entrada (Testado no Balcão)</div>
+
+                <div class="checklist-table" id="checklistTable">
+                    <div class="checklist-header">
+                        <span>Item / Função</span>
+                        <span>OK · Defeito · N/T</span>
                     </div>
 
-                    <div class="os-field">
-                        <label for="aparelhoCor">COR</label>
-                        <input type="text" id="aparelhoCor" placeholder="Ex: Cinza">
-                    </div>
-
-                    <div class="os-field">
-                        <label for="aparelhoImei">IMEI / SÉRIE</label>
-                        <input type="text" id="aparelhoImei" placeholder="Número do IMEI">
-                    </div>
-
-                    <div class="os-field">
-                        <label for="aparelhoSenha">SENHA DO APARELHO</label>
-                        <input type="text" id="aparelhoSenha" placeholder="Senha numérica ou padrão">
-                    </div>
-
-                    <div class="os-field">
-                        <label for="aparelhoBateria">BATERIA (%)</label>
-                        <div class="bateria-input-wrapper">
-                            <input type="number" id="aparelhoBateria" min="0" max="100" placeholder="100">
-                            <span class="bateria-suffix">%</span>
+                    <div class="checklist-item">
+                        <span class="checklist-label">Tela / Touchscreen</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('tela','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('tela','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('tela','nt',this)">N/T</button>
                         </div>
                     </div>
 
-                    <div class="os-field full">
-                        <label for="aparelhoAvarias">AVARIAS / ESTADO FÍSICO</label>
-                        <textarea id="aparelhoAvarias" placeholder="Riscos, trincados, marcas de queda..."></textarea>
+                    <div class="checklist-item">
+                        <span class="checklist-label">Carregamento / Conector</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('carregamento','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('carregamento','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('carregamento','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Câmera Traseira</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('cameraTraseira','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('cameraTraseira','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('cameraTraseira','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Câmera Frontal</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('cameraFrontal','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('cameraFrontal','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('cameraFrontal','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Microfone Principal</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('microfone','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('microfone','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('microfone','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Auricular (Ligação)</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('auricular','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('auricular','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('auricular','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Alto-falante (Som)</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('altofalante','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('altofalante','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('altofalante','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Wi-Fi / Bluetooth</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('wifi','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('wifi','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('wifi','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Sinal de Chip / Rede</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('sinal','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('sinal','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('sinal','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Botões Volume / Power</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('botoes','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('botoes','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('botoes','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Biometria / Face ID</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('biometria','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('biometria','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('biometria','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Sensor de Proximidade</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('proximidade','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('proximidade','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('proximidade','nt',this)">N/T</button>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <span class="checklist-label">Carcaça / Vidro Traseiro</span>
+                        <div class="checklist-options">
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('carcaca','ok',this)">OK</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('carcaca','defeito',this)">Defeito</button>
+                            <button type="button" class="chk-btn" onclick="setChecklistStatus('carcaca','nt',this)">N/T</button>
+                        </div>
                     </div>
                 </div>
 
@@ -143,14 +259,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(registration => console.log('SW registrado:', registration))
-                    .catch(err => console.log('Erro SW:', err));
-            });
-        }
-    </script>
 </body>
 </html>
