@@ -1,10 +1,11 @@
-const CACHE_NAME = 'eletrocell-v3';
+const CACHE_NAME = 'eletrocell-v6';
 const urlsToCache = [
   './',
   './index.html',
   './styles.css',
   './script.js',
-  './manifest.json'
+  './manifest.json',
+  './logo.svg'
 ];
 
 self.addEventListener('install', event => {
